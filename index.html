@@ -1,0 +1,81 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>Josh's Cafe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">
+      <a href="index.html">
+        <img src="Images/logo.jpg" alt="Profile" class="navbar-img">
+      </a>
+      <span class="navbar-title">MANOK NI JOSH</span>
+    </div>
+    <a href="menu.html" class="active">MENU</a>
+    <a href="branch.html">BRANCH</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+
+  <div class="menu-section" id="menuSection">
+    <button id="closeMenuSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
+    <aside class="menu-sidebar">
+      <h1>Menu <br> <br><br> <br>  </h1> 
+      <h2>Food</h2> <hr>
+      <ul>
+        <li><a href="#">Chicken Dishes</a></li>
+        <li><a href="#">Rice Meals</a></li>
+        <li><a href="#">Featured Drinks</a></li>
+        <li><a href="#">Brewed coffee</a></li>
+        <li><a href="#">Desserts</a></li>
+      </ul>
+     <br><h2>Drinks</h2> 
+        <ul>
+          <li><a href="#">Featured Drinks</a></li>
+          <li><a href="#">Espresso</a></li>
+          <li><a href="#">Blended Beverage</a></li>
+        </ul>
+    </aside>
+
+    <div class="menu-grid">
+      <div class="card">
+        <div class="card-inner">
+          <img src="Images/Chicken curry.jpg" alt="Chicken curry" class="card-image clickable" id="chickenCurryImg">
+          <h2 class="card-title">Chicken curry</h2>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="branch-section" id="branchSection">
+    <button id="closeBranchSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
+    <div class="branch-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
+      <h2>Our Branches</h2>
+      <ul>
+        <li>Branch 1: Main Street, City</li>
+        <li>Branch 2: Second Avenue, City</li>
+        <li>Branch 3: Third Road, City</li>
+      </ul>
+    </div>
+  </div>
+  <div class="about-section" id="aboutSection">
+    <button id="closeAboutSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
+    <div class="about-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
+      <h2>About Us</h2>
+      <p>Welcome to Josh's Cafe! We serve delicious food and drinks with a smile. Our mission is to provide a cozy place for everyone to enjoy great meals and good company.</p>
+    </div>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <div class="modal-img-wrap">
+        <img src="Images/Chicken curry.jpg" alt="Chicken curry" class="modal-image">
+      </div>
+      <div class="modal-details">
+        <h2 class="modal-title">Chicken curry</h2>
+        <p class="modal-desc">Chicken curry is a flavorful dish made by simmering chicken pieces in a spiced gravy. It typically includes ingredients like onions, garlic, ginger, tomatoes, and a mix of spices such as turmeric, cumin, coriander, and chili powder. The curry can be made with or without coconut milk or cream, depending on the regional style. It's usually served with rice or bread like naan or roti. Popular across South Asia and around the world, chicken curry is known for its rich aroma, bold taste, and comforting warmth.</p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

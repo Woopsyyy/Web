@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Josh's Cafe - Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">
+      <a href="index.html">
+        <img src="Images/logo.jpg" alt="Profile" class="navbar-img">
+      </a>
+      <span class="navbar-title">MANOK NI JOSH</span>
+    </div>
+    <a href="menu.html" class="active">MENU</a>
+    <a href="branch.html">BRANCH</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+  <div class="menu-rectangle">
+    <span class="menu-title">Menu</span>
+    <input type="text" name="text" placeholder="Search our food and drinks" class="input">
+  </div>
+  <div class="menu-section" id="menuSection" style="display:flex;position:static;background:none;width:auto;height:auto;z-index:auto;">
+    <aside class="menu-sidebar">
+      
+      <h2>Food</h2> <hr>
+      <ul>
+        <li><a href="#chicken-dishes">Chicken Dishes</a></li>
+        <li><a href="#">Rice Meals</a></li>
+        <li><a href="#">Oatmeal & Fruits</a></li>
+        <li><a href="#">Desserts</a></li> 
+      </ul>
+      <br><h2>Drinks</h2> <hr>
+      <ul>
+        <li><a href="#">Featured Drinks</a></li>
+        <li><a href="#">Espresso</a></li>
+        <li><a href="#">Blended Beverage</a></li>
+        <li><a href="#">Brewed coffee</a></li>
+      </ul>
+    </aside>
+    <h2 id="chicken-dishes"></h2>
+    <div class="menu-grid">
+      <div class="card">
+        <div class="card-inner">
+          <img src="Images/Chicken curry.jpg" alt="Chicken curry" class="card-image clickable" id="chickenCurryImg">
+          <h2 class="card-title">Chicken Curry</h2>
+          <div class="card-label">Chicken Dishes</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <img src="Images/Buter Chicken.jpg" alt="Butter Chicken" class="card-image clickable" id="butterChickenImg">
+          <h2 class="card-title">Butter Chicken</h2>
+          <div class="card-label">Chicken Dishes</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <img src="Images/Crispy Chilli Chicken.jpg" alt="Crispy Chilli Chicken" class="card-image clickable" id="crispyChilliChickenImg">
+          <h2 class="card-title">Crispy Chilli</h2>
+          <div class="card-label">Chicken Dishes</div>
+        </div>
+      </div>
+      <!-- Other cards for Rice Meals, Oatmeal & Fruits, Desserts, Drinks, etc. can go here -->
+    </div>
+  </div>
+  <!-- Single dynamic modal for all cards -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <div class="modal-img-wrap">
+        <img src="" alt="" class="modal-image" id="modalImg">
+      </div>
+      <div class="modal-details">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 
