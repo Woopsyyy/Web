@@ -16,13 +16,14 @@
     <a href="branch.html">BRANCH</a>
     <a href="about.html">ABOUT</a>
   </div>
+
   <div class="menu-rectangle">
     <span class="menu-title">Menu</span>
     <input type="text" name="text" placeholder="Search our food and drinks" class="input">
   </div>
+
   <div class="menu-section" id="menuSection" style="display:flex;position:static;background:none;width:auto;height:auto;z-index:auto;">
     <aside class="menu-sidebar">
-      
       <h2>Food</h2> <hr>
       <ul>
         <li><a href="#chicken-dishes">Chicken Dishes</a></li>
@@ -38,32 +39,35 @@
         <li><a href="#">Brewed coffee</a></li>
       </ul>
     </aside>
-    <h2 id="chicken-dishes"></h2>
-    <div class="menu-grid">
-      <div class="card">
-        <div class="card-inner">
-          <img src="Images/Chicken curry.jpg" alt="Chicken curry" class="card-image clickable" id="chickenCurryImg">
-          <h2 class="card-title">Chicken Curry</h2>
-          <div class="card-label">Chicken Dishes</div>
+    <div class="menu-content">
+      <h2 id="chicken-dishes"></h2>
+      <div class="menu-grid">
+        <div class="card">
+          <div class="card-inner">
+            <img src="Images/Chicken curry.jpg" alt="Chicken curry" class="card-image clickable" id="chickenCurryImg">
+            <h2 class="card-title">Chicken Curry</h2>
+            <div class="card-label">Chicken Dishes</div>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-inner">
-          <img src="Images/Buter Chicken.jpg" alt="Butter Chicken" class="card-image clickable" id="butterChickenImg">
-          <h2 class="card-title">Butter Chicken</h2>
-          <div class="card-label">Chicken Dishes</div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="Images/Buter Chicken.jpg" alt="Butter Chicken" class="card-image clickable" id="butterChickenImg">
+            <h2 class="card-title">Butter Chicken</h2>
+            <div class="card-label">Chicken Dishes</div>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-inner">
-          <img src="Images/Crispy Chilli Chicken.jpg" alt="Crispy Chilli Chicken" class="card-image clickable" id="crispyChilliChickenImg">
-          <h2 class="card-title">Crispy Chilli</h2>
-          <div class="card-label">Chicken Dishes</div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="Images/Crispy Chilli Chicken.jpg" alt="Crispy Chilli Chicken" class="card-image clickable" id="crispyChilliChickenImg">
+            <h2 class="card-title">Crispy Chilli</h2>
+            <div class="card-label">Chicken Dishes</div>
+          </div>
         </div>
+        <!-- Add more cards as needed -->
       </div>
-      <!-- Other cards for Rice Meals, Oatmeal & Fruits, Desserts, Drinks, etc. can go here -->
     </div>
   </div>
+
   <!-- Single dynamic modal for all cards -->
   <div id="modal" class="modal">
     <div class="modal-content">
@@ -77,6 +81,27 @@
       </div>
     </div>
   </div>
+
+  <div class="branch-section" id="branchSection">
+    <button id="closeBranchSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
+    <div class="branch-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
+      <h2>Our Branches</h2>
+      <ul>
+        <li>Branch 1: Main Street, City</li>
+        <li>Branch 2: Second Avenue, City</li>
+        <li>Branch 3: Third Road, City</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="about-section" id="aboutSection">
+    <button id="closeAboutSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
+    <div class="about-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
+      <h2>About Us</h2>
+      <p>Welcome to Josh's Cafe! We serve delicious food and drinks with a smile. Our mission is to provide a cozy place for everyone to enjoy great meals and good company.</p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
-</html> 
+</html>
