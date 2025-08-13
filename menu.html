@@ -1,107 +1,865 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Josh's Cafe - Menu</title>
+    <link href="Bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="navbar">
-    <div class="navbar-left">
-      <a href="index.html">
-        <img src="Images/logo.jpg" alt="Profile" class="navbar-img">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="Images/logo.jpg" alt="Josh's Cafe" class="navbar-img">
       </a>
-      <span class="navbar-title">MANOK NI JOSH</span>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="menu.html">MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="branch.html">BRANCH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">ABOUT</a>
+          </li>
+        </ul>
+        
+        <div class="navbar-nav" id="authSection">
+          <!-- This will be populated by JavaScript based on auth status -->
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-link" href="#" onclick="showCart()" title="View Cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartCount" class="badge bg-primary ms-1">0</span>
+          </a>
+          <a class="nav-link" href="#" onclick="showFavorites()" title="View Favorites">
+            <i class="fas fa-heart"></i>
+            <span id="favoritesCount" class="badge bg-danger ms-1">0</span>
+          </a>
+        </div>
+      </div>
     </div>
-    <a href="menu.html" class="active">MENU</a>
-    <a href="branch.html">BRANCH</a>
-    <a href="about.html">ABOUT</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="menu-hero">
+    <div class="container">
+      <h1>Our Menu</h1>
+      <p>Discover our carefully crafted dishes, made with the finest ingredients and prepared with love</p>
+    </div>
   </div>
 
-  <div class="menu-rectangle">
-    <span class="menu-title">Menu</span>
-    <input type="text" name="text" placeholder="Search our food and drinks" class="input">
+  <!-- Category Navigation -->
+  <div class="category-nav">
+    <div class="container">
+      <nav class="nav justify-content-center">
+        <a class="nav-link active" href="#" data-category="all">All Items</a>
+        <a class="nav-link" href="#" data-category="main">Main Dishes</a>
+        <a class="nav-link" href="#" data-category="appetizer">Appetizers</a>
+        <a class="nav-link" href="#" data-category="dessert">Desserts</a>
+        <a class="nav-link" href="#" data-category="beverage">Beverages</a>
+      </nav>
+    </div>
   </div>
 
-  <div class="menu-section" id="menuSection" style="display:flex;position:static;background:none;width:auto;height:auto;z-index:auto;">
-    <aside class="menu-sidebar">
-      <h2>Food</h2> <hr>
-      <ul>
-        <li><a href="#chicken-dishes">Chicken Dishes</a></li>
-        <li><a href="#">Rice Meals</a></li>
-        <li><a href="#">Oatmeal & Fruits</a></li>
-        <li><a href="#">Desserts</a></li> 
-      </ul>
-      <br><h2>Drinks</h2> <hr>
-      <ul>
-        <li><a href="#">Featured Drinks</a></li>
-        <li><a href="#">Espresso</a></li>
-        <li><a href="#">Blended Beverage</a></li>
-        <li><a href="#">Brewed coffee</a></li>
-      </ul>
-    </aside>
-    <div class="menu-content">
-      <h2 id="chicken-dishes"></h2>
-      <div class="menu-grid">
-        <div class="card">
-          <div class="card-inner">
-            <img src="Images/Chicken curry.jpg" alt="Chicken curry" class="card-image clickable" id="chickenCurryImg">
-            <h2 class="card-title">Chicken Curry</h2>
-            <div class="card-label">Chicken Dishes</div>
+  <!-- Search Container -->
+  <div class="container">
+    <div class="search-container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="text-center mb-3">
+            <h4>Search Our Menu</h4>
+            <p class="text-muted">Find your favorite dishes quickly and easily</p>
           </div>
+          <input type="text" 
+                 id="Search" 
+                 class="form-control search-input" 
+                 placeholder="Search for food, drinks, or ingredients...">
         </div>
-        <div class="card">
-          <div class="card-inner">
-            <img src="Images/Buter Chicken.jpg" alt="Butter Chicken" class="card-image clickable" id="butterChickenImg">
-            <h2 class="card-title">Butter Chicken</h2>
-            <div class="card-label">Chicken Dishes</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-inner">
-            <img src="Images/Crispy Chilli Chicken.jpg" alt="Crispy Chilli Chicken" class="card-image clickable" id="crispyChilliChickenImg">
-            <h2 class="card-title">Crispy Chilli</h2>
-            <div class="card-label">Chicken Dishes</div>
-          </div>
-        </div>
-        <!-- Add more cards as needed -->
       </div>
     </div>
   </div>
 
-  <!-- Single dynamic modal for all cards -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModal">&times;</span>
-      <div class="modal-img-wrap">
-        <img src="" alt="" class="modal-image" id="modalImg">
+  <!-- Menu Container -->
+  <div class="menu-container">
+    <div class="container">
+      <!-- Main Dishes Section -->
+      <div class="menu-section" id="mainSection">
+        <h2 class="section-title">Main Dishes</h2>
+        <div class="menu-grid" id="mainGrid">
+          <!-- Main dishes will be populated by JavaScript -->
+        </div>
       </div>
-      <div class="modal-details">
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <p class="modal-desc" id="modalDesc"></p>
+
+      <!-- Appetizers Section -->
+      <div class="menu-section" id="appetizerSection">
+        <h2 class="section-title">Appetizers</h2>
+        <div class="menu-grid" id="appetizerGrid">
+          <!-- Appetizers will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Desserts Section -->
+      <div class="menu-section" id="dessertSection">
+        <h2 class="section-title">Desserts</h2>
+        <div class="menu-grid" id="dessertGrid">
+          <!-- Desserts will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Beverages Section -->
+      <div class="menu-section" id="beverageSection">
+        <h2 class="section-title">Beverages</h2>
+        <div class="menu-grid" id="beverageGrid">
+          <!-- Beverages will be populated by JavaScript -->
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="branch-section" id="branchSection">
-    <button id="closeBranchSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
-    <div class="branch-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
-      <h2>Our Branches</h2>
-      <ul>
-        <li>Branch 1: Main Street, City</li>
-        <li>Branch 2: Second Avenue, City</li>
-        <li>Branch 3: Third Road, City</li>
-      </ul>
+  <!-- Enhanced Modal for Menu Items -->
+  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modalTitle">Dish Details</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="text-center mb-4">
+                <img id="modalImg" src="" alt="Dish Image" class="modal-image" style="width: 100%; max-width: 400px; border-radius: 16px;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h3 id="modalItemTitle" class="mb-3 text-primary"></h3>
+              <p id="modalDesc" class="mb-4 lead"></p>
+              
+              <div class="row mb-4">
+                <div class="col-6">
+                  <div class="text-center p-3 bg-light rounded">
+                    <h6 class="text-muted mb-1">Price</h6>
+                    <span id="modalPrice" class="h5 text-success fw-bold"></span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-center p-3 bg-light rounded">
+                    <h6 class="text-muted mb-1">Category</h6>
+                    <span id="modalCategory" class="h6 text-primary"></span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">Ingredients</h6>
+                <p id="modalIngredients" class="text-muted"></p>
+              </div>
+              
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">Preparation Time</h6>
+                <p id="modalPrepTime" class="text-muted"></p>
+              </div>
+              
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">Nutritional Info</h6>
+                <div class="row text-center">
+                  <div class="col-3">
+                    <div class="bg-light rounded p-2">
+                      <small class="text-muted d-block">Calories</small>
+                      <span id="modalCalories" class="fw-bold"></span>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="bg-light rounded p-2">
+                      <small class="text-muted d-block">Protein</small>
+                      <span id="modalProtein" class="fw-bold"></span>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="bg-light rounded p-2">
+                      <small class="text-muted d-block">Carbs</small>
+                      <span id="modalCarbs" class="fw-bold"></span>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="bg-light rounded p-2">
+                      <small class="text-muted d-block">Fat</small>
+                      <span id="modalFat" class="fw-bold"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="d-grid gap-2">
+                <button class="btn btn-success btn-lg" onclick="buyNow()">
+                  <i class="fas fa-shopping-bag me-2"></i>Buy Now
+                </button>
+                <button class="btn btn-primary btn-lg" onclick="addToCart()">
+                  <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                </button>
+                <button class="btn btn-outline-danger" onclick="addToFavorites()">
+                  <i class="fas fa-heart me-2"></i>Add to Favorites
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="about-section" id="aboutSection">
-    <button id="closeAboutSection" style="position:absolute;top:10px;right:10px;z-index:10;">&times;</button>
-    <div class="about-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
-      <h2>About Us</h2>
-      <p>Welcome to Josh's Cafe! We serve delicious food and drinks with a smile. Our mission is to provide a cozy place for everyone to enjoy great meals and good company.</p>
-    </div>
-  </div>
-
+  <!-- Bootstrap JS -->
+  <script src="Bootstrap/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
+  
+  <!-- Authentication and Menu Script -->
+  <script>
+    // Check authentication status on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkAuthStatus();
+      loadMenuItems();
+      setupCategoryNavigation();
+      updateCartCount();
+      updateFavoritesCount();
+    });
+
+    // Check if user is authenticated
+    async function checkAuthStatus() {
+      try {
+        const response = await fetch('Backend/auth.php?action=check_session');
+        const result = await response.json();
+        
+        if (result.success) {
+          // User is logged in
+          showAuthenticatedUser(result.data.user);
+          // Store user info in localStorage for cart/favorites functionality
+          localStorage.setItem('user', JSON.stringify(result.data.user));
+        } else {
+          // User is not logged in, show login link
+          showLoginLink();
+          localStorage.removeItem('user');
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        // Show login link on error
+        showLoginLink();
+        localStorage.removeItem('user');
+      }
+    }
+
+    // Show login link for unauthenticated users
+    function showLoginLink() {
+      const authSection = document.getElementById('authSection');
+      authSection.innerHTML = `
+        <div class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </div>
+      `;
+    }
+
+    // Show authenticated user section
+    function showAuthenticatedUser(user) {
+      const authSection = document.getElementById('authSection');
+      authSection.innerHTML = `
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <img src="${user.profile_picture || 'Images/logo.jpg'}" alt="Profile" class="rounded-circle me-2" style="width: 24px; height: 24px; object-fit: cover;">
+            ${user.name}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+            <li><a class="dropdown-item" href="orders.html">My Orders</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+          </ul>
+        </div>
+      `;
+    }
+
+    // Logout function
+    async function logout() {
+      try {
+        const response = await fetch('Backend/auth.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'action=logout'
+        });
+        
+        const result = await response.json();
+        if (result.success) {
+          // Clear localStorage
+          localStorage.removeItem('user');
+          localStorage.removeItem('cart');
+          localStorage.removeItem('favorites');
+          window.location.href = 'index.html';
+        }
+      } catch (error) {
+        console.error('Logout error:', error);
+        // Clear localStorage even on error
+        localStorage.removeItem('user');
+        localStorage.removeItem('cart');
+        localStorage.removeItem('favorites');
+        window.location.href = 'index.html';
+      }
+    }
+
+    // Setup category navigation
+    function setupCategoryNavigation() {
+      document.querySelectorAll('.category-nav .nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Update active state
+          document.querySelectorAll('.category-nav .nav-link').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show/hide sections
+          const category = this.dataset.category;
+          showCategory(category);
+        });
+      });
+    }
+
+    // Show specific category
+    function showCategory(category) {
+      const sections = ['main', 'appetizer', 'dessert', 'beverage'];
+      
+      if (category === 'all') {
+        sections.forEach(section => {
+          document.getElementById(section + 'Section').style.display = 'block';
+        });
+      } else {
+        sections.forEach(section => {
+          const element = document.getElementById(section + 'Section');
+          element.style.display = section === category ? 'block' : 'none';
+        });
+      }
+    }
+
+    // Load menu items
+    function loadMenuItems() {
+      // Enhanced menu data with full details
+      const menuItems = [
+        {
+          id: 1,
+          title: 'Butter Chicken',
+          description: 'Creamy, rich butter chicken with tender pieces of chicken in a tomato-based sauce, served with aromatic basmati rice.',
+          image: 'Images/Buter Chicken.jpg',
+          category: 'main',
+          price: '$12.99',
+          ingredients: 'Chicken breast, tomatoes, cream, butter, garam masala, fenugreek, ginger, garlic, onions, cashews',
+          prepTime: '25-30 minutes',
+          nutrition: {
+            calories: '450',
+            protein: '28g',
+            carbs: '12g',
+            fat: '32g'
+          }
+        },
+        {
+          id: 2,
+          title: 'Chicken Curry',
+          description: 'Spicy chicken curry with aromatic spices and herbs, a perfect blend of heat and flavor.',
+          image: 'Images/Chicken curry.jpg',
+          category: 'main',
+          price: '$11.99',
+          ingredients: 'Chicken thighs, curry powder, turmeric, cumin, coriander, chili, coconut milk, tomatoes, onions',
+          prepTime: '20-25 minutes',
+          nutrition: {
+            calories: '380',
+            protein: '26g',
+            carbs: '8g',
+            fat: '28g'
+          }
+        },
+        {
+          id: 3,
+          title: 'Crispy Chilli Chicken',
+          description: 'Crispy fried chicken with sweet and spicy chili sauce, a crowd favorite with perfect crunch.',
+          image: 'Images/Crispy Chilli Chicken.jpg',
+          category: 'main',
+          price: '$13.99',
+          ingredients: 'Chicken breast, cornstarch, soy sauce, chili sauce, honey, garlic, ginger, green onions, sesame seeds',
+          prepTime: '15-20 minutes',
+          nutrition: {
+            calories: '520',
+            protein: '32g',
+            carbs: '45g',
+            fat: '24g'
+          }
+        },
+        {
+          id: 4,
+          title: 'Spring Rolls',
+          description: 'Fresh vegetable spring rolls with crispy wrapper, served with sweet chili sauce.',
+          image: 'Images/feature.jpg',
+          category: 'appetizer',
+          price: '$6.99',
+          ingredients: 'Rice paper, carrots, cucumber, lettuce, mint, cilantro, rice vermicelli, shrimp, peanut sauce',
+          prepTime: '10-15 minutes',
+          nutrition: {
+            calories: '180',
+            protein: '8g',
+            carbs: '28g',
+            fat: '6g'
+          }
+        },
+        {
+          id: 5,
+          title: 'Chocolate Lava Cake',
+          description: 'Warm chocolate cake with molten center, served with vanilla ice cream.',
+          image: 'Images/chocolate lava cake.jpg',
+          category: 'dessert',
+          price: '$8.99',
+          ingredients: 'Dark chocolate, butter, eggs, sugar, flour, vanilla extract, cocoa powder, vanilla ice cream',
+          prepTime: '12-15 minutes',
+          nutrition: {
+            calories: '420',
+            protein: '6g',
+            carbs: '52g',
+            fat: '22g'
+          }
+        },
+        {
+          id: 6,
+          title: 'Iced Coffee',
+          description: 'Smooth cold brew coffee with cream and vanilla, perfect for hot days.',
+          image: 'Images/ice coffee.jpg',
+          category: 'beverage',
+          price: '$4.99',
+          ingredients: 'Cold brew coffee, heavy cream, vanilla syrup, ice, whipped cream, chocolate shavings',
+          prepTime: '5 minutes',
+          nutrition: {
+            calories: '180',
+            protein: '2g',
+            carbs: '18g',
+            fat: '12g'
+          }
+        },
+        {
+          id: 7,
+          title: 'Milk tea',
+          description: 'Milk tea is a popular beverage made by combining tea with milk, sugar, and often ice.',          
+          image: 'Images/milk tea.jpg',
+          category: 'beverage',
+           price: '$4.99',
+          ingredients: 'Tea, milk, sweeterner, ice (optional), flavoring',
+           prepTime: '5 minutes',
+          nutrition: {
+            calories: '180',
+            protein: '2g',
+            carbs: '18g',
+            fat: '12g'
+          }
+      
+        }
+      ];
+
+      // Populate each category grid
+      populateGrid('mainGrid', menuItems.filter(item => item.category === 'main'));
+      populateGrid('appetizerGrid', menuItems.filter(item => item.category === 'appetizer'));
+      populateGrid('dessertGrid', menuItems.filter(item => item.category === 'dessert'));
+      populateGrid('beverageGrid', menuItems.filter(item => item.category === 'beverage'));
+    }
+
+    // Populate grid with items
+    function populateGrid(gridId, items) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      
+      grid.innerHTML = items.map(item => `
+        <div class="menu-card" onclick="openModal(${item.id})">
+          <div class="card-image-container">
+            <img src="${item.image}" class="card-image" alt="${item.title}">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">${item.title}</h5>
+            <p class="card-text">${item.description}</p>
+            <div class="card-footer">
+              <span class="price">${item.price}</span>
+              <span class="category-badge">${item.category}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Open modal with full dish details
+    function openModal(itemId) {
+      // Find the item data
+      const allItems = [
+        {
+          id: 1,
+          title: 'Butter Chicken',
+          description: 'Creamy, rich butter chicken with tender pieces of chicken in a tomato-based sauce, served with aromatic basmati rice.',
+          image: 'Images/Buter Chicken.jpg',
+          category: 'main',
+          price: '$12.99',
+          ingredients: 'Chicken breast, tomatoes, cream, butter, garam masala, fenugreek, ginger, garlic, onions, cashews',
+          prepTime: '25-30 minutes',
+          nutrition: {
+            calories: '450',
+            protein: '28g',
+            carbs: '12g',
+            fat: '32g'
+          }
+        },
+        {
+          id: 2,
+          title: 'Chicken Curry',
+          description: 'Spicy chicken curry with aromatic spices and herbs, a perfect blend of heat and flavor.',
+          image: 'Images/Chicken curry.jpg',
+          category: 'main',
+          price: '$11.99',
+          ingredients: 'Chicken thighs, curry powder, turmeric, cumin, coriander, chili, coconut milk, tomatoes, onions',
+          prepTime: '20-25 minutes',
+          nutrition: {
+            calories: '380',
+            protein: '26g',
+            carbs: '8g',
+            fat: '28g'
+          }
+        },
+        {
+          id: 3,
+          title: 'Crispy Chilli Chicken',
+          description: 'Crispy fried chicken with sweet and spicy chili sauce, a crowd favorite with perfect crunch.',
+          image: 'Images/Crispy Chilli Chicken.jpg',
+          category: 'main',
+          price: '$13.99',
+          ingredients: 'Chicken breast, cornstarch, soy sauce, chili sauce, honey, garlic, ginger, green onions, sesame seeds',
+          prepTime: '15-20 minutes',
+          nutrition: {
+            calories: '520',
+            protein: '32g',
+            carbs: '45g',
+            fat: '24g'
+          }
+        },
+        {
+          id: 4,
+          title: 'Spring Rolls',
+          description: 'Fresh vegetable spring rolls with crispy wrapper, served with sweet chili sauce.',
+          image: 'Images/feature.jpg',
+          category: 'appetizer',
+          price: '$6.99',
+          ingredients: 'Rice paper, carrots, cucumber, lettuce, mint, cilantro, rice vermicelli, shrimp, peanut sauce',
+          prepTime: '10-15 minutes',
+          nutrition: {
+            calories: '180',
+            protein: '8g',
+            carbs: '28g',
+            fat: '6g'
+          }
+        },
+        {
+          id: 5,
+          title: 'Chocolate Lava Cake',
+          description: 'Warm chocolate cake with molten center, served with vanilla ice cream.',
+          image: 'Images/chocolate lava cake.jpg',
+          category: 'dessert',
+          price: '$8.99',
+          ingredients: 'Dark chocolate, butter, eggs, sugar, flour, vanilla extract, cocoa powder, vanilla ice cream',
+          prepTime: '12-15 minutes',
+          nutrition: {
+            calories: '420',
+            protein: '6g',
+            carbs: '52g',
+            fat: '22g'
+          }
+        },
+        {
+          id: 6,
+          title: 'Iced Coffee',
+          description: 'Smooth cold brew coffee with cream and vanilla, perfect for hot days.',
+         image: 'Images/ice coffee.jpg',
+          category: 'beverage',
+          price: '$4.99',
+          ingredients: 'Cold brew coffee, heavy cream, vanilla syrup, ice, whipped cream, chocolate shavings',
+          prepTime: '5 minutes',
+          nutrition: {
+            calories: '180',
+            protein: '2g',
+            carbs: '18g',
+            fat: '12g'
+          }
+        },
+         {
+          id: 7,
+          title: 'Milk tea',
+          description: 'Milk tea is a popular beverage made by combining tea with milk, sugar, and often ice.',
+          image: 'Images/milk tea.jpg',
+          category: 'beverage',
+          price: '$4.99',
+          ingredients: 'Cold brew coffee, heavy cream, vanilla syrup, ice, whipped cream, chocolate shavings',
+          prepTime: '5 minutes',
+          nutrition: {
+            calories: '180',
+            protein: '2g',
+            carbs: '18g',
+            fat: '12g'
+          }
+        },
+        {
+            id: 8,
+            title: 'Cappucino',
+            description: 'A classic Italian coffee drink made with espresso, steamed milk, and a layer of frothed milk on top.',
+            image: 'Images/cappucino.jpg',
+            category: 'beverage',
+            price: '$3.99',
+            ingredients: 'Espresso, steamed milk, foamed milk,  cocoa powder or cinnamon, sweetener (optional)',
+            prepTime: '5 minutes',
+            nutrition: {
+              calories: '120',
+              protein: '6g',
+              carbs: '10g',
+              fat: '6g'
+            }
+        }
+      ];
+      
+      const item = allItems.find(i => i.id === itemId);
+      if (!item) return;
+
+      // Store current item for button functions
+      currentModalItem = item;
+
+      // Populate modal with item details
+      document.getElementById('modalImg').src = item.image;
+      document.getElementById('modalItemTitle').textContent = item.title;
+      document.getElementById('modalDesc').textContent = item.description;
+      document.getElementById('modalPrice').textContent = item.price;
+      document.getElementById('modalCategory').textContent = item.category;
+      document.getElementById('modalIngredients').textContent = item.ingredients;
+      document.getElementById('modalPrepTime').textContent = item.prepTime;
+      document.getElementById('modalCalories').textContent = item.nutrition.calories;
+      document.getElementById('modalProtein').textContent = item.nutrition.protein;
+      document.getElementById('modalCarbs').textContent = item.nutrition.carbs;
+      document.getElementById('modalFat').textContent = item.nutrition.fat;
+
+      // Show modal
+      const modal = new bootstrap.Modal(document.getElementById('modal'));
+      modal.show();
+    }
+
+    // Search functionality
+    document.getElementById('Search').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const allCards = document.querySelectorAll('.menu-card');
+      
+      allCards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        const description = card.querySelector('.card-text').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Global variable to store current item in modal
+    let currentModalItem = null;
+
+    // Buy Now functionality
+    function buyNow() {
+      if (!currentModalItem) {
+        alert('No item selected');
+        return;
+      }
+      
+      // Check if user is authenticated
+      if (!isUserAuthenticated()) {
+        alert('Please login to purchase items');
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Redirect to checkout or show purchase confirmation
+      const confirmPurchase = confirm(`Confirm purchase of ${currentModalItem.title} for ${currentModalItem.price}?`);
+      if (confirmPurchase) {
+        // Here you would typically redirect to a checkout page or process payment
+        alert(`Thank you for your purchase! ${currentModalItem.title} will be prepared for you.`);
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modal'));
+        modal.hide();
+        
+        // You can redirect to checkout page here
+        // window.location.href = 'checkout.html';
+      }
+    }
+
+    // Add to Cart functionality
+    function addToCart() {
+      if (!currentModalItem) {
+        alert('No item selected');
+        return;
+      }
+      
+      // Check if user is authenticated
+      if (!isUserAuthenticated()) {
+        alert('Please login to add items to cart');
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Get existing cart from localStorage
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Check if item already exists in cart
+      const existingItem = cart.find(item => item.id === currentModalItem.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+        alert(`${currentModalItem.title} quantity updated in cart!`);
+      } else {
+        // Add new item to cart
+        cart.push({
+          id: currentModalItem.id,
+          title: currentModalItem.title,
+          price: currentModalItem.price,
+          image: currentModalItem.image,
+          quantity: 1
+        });
+        alert(`${currentModalItem.title} added to cart!`);
+      }
+      
+      // Save cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update cart count in UI if it exists
+      updateCartCount();
+    }
+
+    // Add to Favorites functionality
+    function addToFavorites() {
+      if (!currentModalItem) {
+        alert('No item selected');
+        return;
+      }
+      
+      // Check if user is authenticated
+      if (!isUserAuthenticated()) {
+        alert('Please login to add items to favorites');
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Get existing favorites from localStorage
+      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      
+      // Check if item already exists in favorites
+      const existingItem = favorites.find(item => item.id === currentModalItem.id);
+      
+      if (existingItem) {
+        alert(`${currentModalItem.title} is already in your favorites!`);
+        return;
+      }
+      
+      // Add new item to favorites
+      favorites.push({
+        id: currentModalItem.id,
+        title: currentModalItem.title,
+        price: currentModalItem.price,
+        image: currentModalItem.image,
+        category: currentModalItem.category
+      });
+      
+      // Save favorites to localStorage
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      
+      alert(`${currentModalItem.title} added to favorites!`);
+      
+      // Update favorites count in UI if it exists
+      updateFavoritesCount();
+    }
+
+    // Check if user is authenticated
+    function isUserAuthenticated() {
+      // Check if user has a valid session
+      const user = localStorage.getItem('user');
+      return user !== null;
+    }
+
+    // Update cart count in UI
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      // Update cart count display if it exists
+      const cartCountElement = document.getElementById('cartCount');
+      if (cartCountElement) {
+        cartCountElement.textContent = cartCount;
+      }
+    }
+
+    // Update favorites count in UI
+    function updateFavoritesCount() {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const favoritesCount = favorites.length;
+      
+      // Update favorites count display if it exists
+      const favoritesCountElement = document.getElementById('favoritesCount');
+      if (favoritesCountElement) {
+        favoritesCountElement.textContent = favoritesCount;
+      }
+    }
+
+    // Show cart contents
+    function showCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      if (cart.length === 0) {
+        alert('Your cart is empty');
+        return;
+      }
+      
+      let cartContent = 'Your Cart:\n\n';
+      let total = 0;
+      
+      cart.forEach(item => {
+        const itemTotal = parseFloat(item.price.replace('$', '')) * item.quantity;
+        total += itemTotal;
+        cartContent += `${item.title} x${item.quantity} - $${itemTotal.toFixed(2)}\n`;
+      });
+      
+      cartContent += `\nTotal: $${total.toFixed(2)}`;
+      
+      alert(cartContent);
+    }
+
+    // Show favorites
+    function showFavorites() {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      
+      if (favorites.length === 0) {
+        alert('You have no favorites yet');
+        return;
+      }
+      
+      let favoritesContent = 'Your Favorites:\n\n';
+      
+      favorites.forEach(item => {
+        favoritesContent += `${item.title} - ${item.price}\n`;
+      });
+      
+      alert(favoritesContent);
+    }
+
+
+  </script>
 </body>
 </html>

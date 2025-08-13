@@ -1,30 +1,161 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> 
+<html lang="en">
 <head>
-    <title>Josh's Cafe - Branches</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh's Cafe - Our Branches</title>
+    <link href="Bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  <div class="navbar">
-    <div class="navbar-left">
-      <a href="index.html">
-        <img src="Images/logo.jpg" alt="Profile" class="navbar-img">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="Images/logo.jpg" alt="Josh's Cafe" class="navbar-img">
       </a>
-      <span class="navbar-title">MANOK NI JOSH</span>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="menu.html">MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="branch.html">BRANCH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">ABOUT</a>
+          </li>
+        </ul>
+        
+        <div class="navbar-nav">
+          <a class="nav-link" href="login.html">Login</a>
+          <a class="nav-link" href="login.html">Signup</a>
+        </div>
+      </div>
     </div>
-    <a href="menu.html">MENU</a>
-    <a href="branch.html" class="active">BRANCH</a>
-    <a href="about.html">ABOUT</a>
-  </div>
-  <div class="branch-section" id="branchSection" style="display:flex;position:static;background:none;width:auto;height:auto;z-index:auto;">
-    <div class="branch-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
-      <h2>Our Branches</h2>
-      <ul>
-        <li>Branch 1: Main Street, City</li>
-        <li>Branch 2: Second Avenue, City</li>
-        <li>Branch 3: Third Road, City</li>
-      </ul>
+  </nav>
+
+  <!-- Branch Hero Section -->
+  <div class="branch-hero py-5 mt-5">
+    <div class="container">
+      <div class="row align-items-center min-vh-75">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold text-white mb-4">Our Branches</h1>
+          <p class="lead text-white mb-4">Find the Josh's Cafe location nearest to you and experience our warm hospitality.</p>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="Images/feature4.jpg" alt="Our Branches" class="img-fluid rounded branch-hero-image">
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Branch Locations -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="text-center mb-5">Visit Us Today</h2>
+        
+        <div class="row g-4">
+          <!-- Branch 1 -->
+          <div class="col-lg-4">
+            <div class="card h-100 border-0 shadow branch-card">
+              <div class="card-body text-center p-4">
+                <div class="branch-icon mb-3">
+                  <i class="fas fa-store fa-3x text-primary"></i>
+                </div>
+                <h4 class="card-title">Main Street Branch</h4>
+                <p class="card-text text-muted mb-3">Our flagship location in the heart of the city</p>
+                <div class="branch-details">
+                  <p class="mb-2"><strong>Address:</strong> Near at talisay city college</p>
+                  <p class="mb-2"><strong>Phone:</strong> (555) 123-4567</p>
+                  <p class="mb-3"><strong>Hours:</strong> 7:00 AM - 10:00 PM</p>
+                  <a href="https://maps.app.goo.gl/aLjAbGeu9hUFm3nVA" class="btn btn-outline-primary">Get Directions</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 2 -->
+          <div class="col-lg-4">
+            <div class="card h-100 border-0 shadow branch-card">
+              <div class="card-body text-center p-4">
+                <div class="branch-icon mb-3">
+                  <i class="fas fa-coffee fa-3x text-primary"></i>
+                </div>
+                <h4 class="card-title">Second Avenue Branch</h4>
+                <p class="card-text text-muted mb-3">Cozy atmosphere perfect for coffee lovers</p>
+                <div class="branch-details">
+                  <p class="mb-2"><strong>Address:</strong> Gaisano Supermarket </p>
+                  <p class="mb-2"><strong>Phone:</strong> (555) 234-5678</p>
+                  <p class="mb-3"><strong>Hours:</strong> 6:00 AM - 9:00 PM</p>
+                  <a href="https://maps.app.goo.gl/xKcGuntYC4vtPG419" class="btn btn-outline-primary">Get Directions</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 3 -->
+          <div class="col-lg-4">
+            <div class="card h-100 border-0 shadow branch-card">
+              <div class="card-body text-center p-4">
+                <div class="branch-icon mb-3">
+                  <i class="fas fa-utensils fa-3x text-primary"></i>
+                </div>
+                <h4 class="card-title">Third Road Branch</h4>
+                <p class="card-text text-muted mb-3">Family-friendly dining with outdoor seating</p>
+                <div class="branch-details">
+                  <p class="mb-2"><strong>Address:</strong> City of Naga Plaza</p>
+                  <p class="mb-2"><strong>Phone:</strong> (555) 345-6789</p>
+                  <p class="mb-3"><strong>Hours:</strong> 8:00 AM - 11:00 PM</p>
+                  <a href="https://maps.app.goo.gl/2HSDLbFwFVNYXhc37" class="btn btn-outline-primary">Get Directions</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="row mt-5">
+          <div class="col-lg-8 mx-auto">
+            <div class="bg-light p-4 rounded text-center">
+              <h4 class="mb-3">Social Media</h4>
+              <p class="mb-3">Here our social media to contact us</p>
+              <div class="social-media-icons">
+                <a href="https://www.facebook.com/joshhh699" class="social-icon me-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                  </svg>
+                </a>
+                <a href="https://github.com/Woopsyyy" class="social-icon me-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </a>
+                <a href="https://www.tiktok.com/@onlyisaacc1" class="social-icon me-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/>
+                  </svg>
+                </a>
+                <a href="https://open.spotify.com/user/31mzobrjoi722n2ajvgip44kddyu" class="social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-spotify" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.875-1.148-4.243-1.408-7.028-.77a.499.499 0 0 1-.61-.374.5.5 0 0 1 .373-.61c3.012-.696 5.662-.397 7.77.892a.5.5 0 0 1 .165.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.126.624.624 0 0 1 1.205-.362c2.602.703 6.263 1.02 8.814 1.02a.624.624 0 0 1 .181 1.195zm-1.833 1.89a.5.5 0 0 1-.726.637c-2.301-1.368-6.783-1.66-9.542-.753a.5.5 0 0 1-.61-.374.5.5 0 0 1 .373-.61c3.012-.696 5.662-.397 7.77.892a.5.5 0 0 1 .165.686z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="Bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

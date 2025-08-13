@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById('modal');
+  const modalElement = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
   const closeModal = document.getElementById('closeModal');
+
+  // Bootstrap modal functionality
+  const modal = new bootstrap.Modal(modalElement);
 
   // Card data for modal
   const cardData = {
@@ -33,18 +36,19 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImg.alt = cardData[key].title;
         modalTitle.textContent = cardData[key].title;
         modalDesc.textContent = cardData[key].desc;
-        modal.style.display = 'block';
+        modal.show();
       }
     });
   });
-
+  
   closeModal.addEventListener('click', function() {
-    modal.style.display = 'none';
+    modal.hide();
   });
 
-  window.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      modal.style.display = 'none';
+  // Close modal when clicking outside
+  modalElement.addEventListener('click', function(e) {
+    if (e.target === this) {
+      modal.hide();
     }
   });
 
@@ -92,20 +96,211 @@ document.addEventListener('DOMContentLoaded', function() {
     if (aboutSection.classList.contains('show') && e.target === aboutSection) hideAllSections();
   });
 
-  // Search bar functionality
-  const searchInput = document.querySelector('.input[type="text"]');
-  if (searchInput) {
-    searchInput.addEventListener('input', function() {
-      const query = searchInput.value.toLowerCase();
+  // Search bar functionality for menu page
+  const menuSearchInput = document.getElementById('Search');
+  if (menuSearchInput) {
+    menuSearchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase().trim();
+      
+      if (query === '') {
+        // Show all cards when search is empty
+        document.querySelectorAll('.menu-grid .card').forEach(function(card) {
+          card.style.display = '';
+        });
+        hideNoResultsMessage();
+        return;
+      }
+      
+      // Search through menu cards
+      let foundItems = 0;
       document.querySelectorAll('.menu-grid .card').forEach(function(card) {
-        const title = card.querySelector('.card-title').textContent.toLowerCase();
-        const label = card.querySelector('.card-label') ? card.querySelector('.card-label').textContent.toLowerCase() : '';
+        const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+        const label = card.querySelector('.card-label')?.textContent.toLowerCase() || '';
+        
         if (title.includes(query) || label.includes(query)) {
           card.style.display = '';
+          foundItems++;
         } else {
           card.style.display = 'none';
         }
       });
+      
+      // Show no results message if no items found
+      if (foundItems === 0) {
+        showNoResultsMessage(query);
+      } else {
+        hideNoResultsMessage();
+      }
+    });
+    
+    // Add clear search functionality
+    menuSearchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        this.value = '';
+        this.dispatchEvent(new Event('input'));
+      }
     });
   }
+  
+  function showNoResultsMessage(query) {
+    hideNoResultsMessage(); // Remove existing message first
+    
+    const noResultsDiv = document.createElement('div');
+    noResultsDiv.className = 'no-results';
+    noResultsDiv.innerHTML = `
+      <p>No dishes found for "${query}"</p>
+      <p>Try searching for: Chicken, Curry, Butter, or Crispy</p>
+    `;
+    
+    const menuGrid = document.querySelector('.menu-grid');
+    if (menuGrid) {
+      menuGrid.appendChild(noResultsDiv);
+    }
+  }
+  
+  function hideNoResultsMessage() {
+    const existingMessage = document.querySelector('.no-results');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+  }
 });
+
+// Search bar functionality for the new search bar
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  if (searchInput && searchBtn) {
+    // Search on input change
+    searchInput.addEventListener('input', performSearch);
+    
+    // Search on button click
+    searchBtn.addEventListener('click', performSearch);
+    
+    // Search on Enter key
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  }
+
+  function performSearch() {
+    const query = searchInput.value.toLowerCase().trim();
+    
+    if (query === '') {
+      // If search is empty, show all items
+      showAllItems();
+      return;
+    }
+
+    // Search through menu items (if on menu page)
+    const menuCards = document.querySelectorAll('.menu-grid .card');
+    if (menuCards.length > 0) {
+      searchMenuItems(query, menuCards);
+    }
+
+    // Search through feature sections (if on home page)
+    const features = document.querySelectorAll('.feature, .feature2, .feature3');
+    if (features.length > 0) {
+      searchFeatures(query, features);
+    }
+
+    // Show search results message
+    showSearchResults(query);
+  }
+
+  function searchMenuItems(query, cards) {
+    let foundItems = 0;
+    
+    cards.forEach(card => {
+      const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+      const label = card.querySelector('.card-label')?.textContent.toLowerCase() || '';
+      const desc = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
+      
+      if (title.includes(query) || label.includes(query) || desc.includes(query)) {
+        card.style.display = '';
+        foundItems++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    return foundItems;
+  }
+
+  function searchFeatures(query, features) {
+    let foundFeatures = 0;
+    
+    features.forEach(feature => {
+      const button = feature.querySelector('.feature-btn');
+      const buttonText = button?.textContent.toLowerCase() || '';
+      
+      if (buttonText.includes(query)) {
+        feature.style.opacity = '1';
+        feature.style.transform = 'scale(1.02)';
+        foundFeatures++;
+      } else {
+        feature.style.opacity = '0.6';
+        feature.style.transform = 'scale(1)';
+      }
+    });
+
+    return foundFeatures;
+  }
+
+  function showAllItems() {
+    // Reset menu items
+    const menuCards = document.querySelectorAll('.menu-grid .card');
+    menuCards.forEach(card => {
+      card.style.display = '';
+    });
+
+    // Reset features
+    const features = document.querySelectorAll('.feature, .feature2, .feature3');
+    features.forEach(feature => {
+      feature.style.opacity = '1';
+      feature.style.transform = 'scale(1)';
+    });
+
+    // Clear search results message
+    clearSearchResults();
+  }
+
+  function showSearchResults(query) {
+    // Remove existing search results message
+    clearSearchResults();
+    
+    const resultsDiv = document.createElement('div');
+    resultsDiv.id = 'searchResults';
+    resultsDiv.className = 'search-results';
+    resultsDiv.innerHTML = `
+      <div class="search-results-content">
+        <span>Search results for: "${query}"</span>
+        <button onclick="clearSearch()" class="clear-search-btn">Clear Search</button>
+      </div>
+    `;
+    
+    // Insert after search container
+    const searchContainer = document.querySelector('.search-container');
+    if (searchContainer) {
+      searchContainer.parentNode.insertBefore(resultsDiv, searchContainer.nextSibling);
+    }
+  }
+
+  function clearSearchResults() {
+    const existingResults = document.getElementById('searchResults');
+    if (existingResults) {
+      existingResults.remove();
+    }
+  }
+
+  // Global function for clear search button
+  window.clearSearch = function() {
+    searchInput.value = '';
+    showAllItems();
+  };
+});
+
+// Login functionality

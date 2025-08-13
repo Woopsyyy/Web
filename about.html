@@ -1,26 +1,122 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> 
+<html lang="en">
 <head>
-    <title>Josh's Cafe - About</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh's Cafe - About Us</title>
+    <link href="Bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  <div class="navbar">
-    <div class="navbar-left">
-      <a href="index.html">
-        <img src="Images/logo.jpg" alt="Profile" class="navbar-img">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="Images/logo.jpg" alt="Josh's Cafe" class="navbar-img">
       </a>
-      <span class="navbar-title">MANOK NI JOSH</span>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="menu.html">MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="branch.html">BRANCH</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html">ABOUT</a>
+          </li>
+        </ul>
+        
+        <div class="navbar-nav">
+          <a class="nav-link" href="login.html">Login</a>
+          <a class="nav-link" href="login.html">Signup</a>
+        </div>
+      </div>
     </div>
-    <a href="menu.html">MENU</a>
-    <a href="branch.html">BRANCH</a>
-    <a href="about.html" class="active">ABOUT</a>
-  </div>
-  <div class="about-section" id="aboutSection" style="display:flex;position:static;background:none;width:auto;height:auto;z-index:auto;">
-    <div class="about-content" style="background:#fff;padding:40px 60px;border-radius:16px;max-width:700px;margin:auto;">
-      <h2>About Us</h2>
-      <p>Welcome to Josh's Cafe! We serve delicious food and drinks with a smile. Our mission is to provide a cozy place for everyone to enjoy great meals and good company.</p>
+  </nav>
+
+  <!-- About Hero Section -->
+  <div class="about-hero py-5 mt-5">
+    <div class="container">
+      <div class="row align-items-center min-vh-75">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold text-white mb-4">About Josh's Cafe</h1>
+          <p class="lead text-white mb-4">Discover our story, our passion, and our commitment to serving you the best dining experience.</p>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="Images/feature2.jpg" alt="About Josh's Cafe" class="img-fluid rounded about-hero-image">
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- About Content -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="about-content bg-white p-5 rounded shadow">
+          <h2 class="h2 mb-4 text-center">Our Story</h2>
+          <p class="lead mb-4">Welcome to Josh's Cafe! We serve delicious food and drinks with a smile.</p>
+          
+          <div class="row g-4 mb-5">
+            <div class="col-md-6">
+              <div class="text-center">
+                <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
+                <h4>Quality Food</h4>
+                <p>We use only the finest ingredients to create memorable dishes that delight your taste buds.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="text-center">
+                <i class="fas fa-coffee fa-3x text-primary mb-3"></i>
+                <h4>Premium Drinks</h4>
+                <p>From artisanal coffee to refreshing beverages, we craft drinks that complement your meal perfectly.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mission-section text-center">
+            <h3 class="h3 mb-3">Our Mission</h3>
+            <p class="mb-4">Our mission is to provide a cozy place for everyone to enjoy great meals and good company. We believe that food brings people together, and we're committed to creating an atmosphere where memories are made and friendships are strengthened.</p>
+            
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Community</h5>
+                    <p class="card-text">Building a welcoming space for our local community.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Quality</h5>
+                    <p class="card-text">Maintaining the highest standards in food and service.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Innovation</h5>
+                    <p class="card-text">Constantly evolving our menu and dining experience.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="Bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html> 
