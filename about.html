@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Josh's Cafe - About Us</title>
     <link href="Bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <!-- Navigation -->
@@ -47,6 +48,20 @@
         <div class="col-lg-6">
           <h1 class="display-4 fw-bold text-white mb-4">About Josh's Cafe</h1>
           <p class="lead text-white mb-4">Discover our story, our passion, and our commitment to serving you the best dining experience.</p>
+          <div class="hero-stats d-flex gap-4 mb-4">
+            <div class="stat-item text-center">
+              <div class="stat-number text-white fw-bold">15+</div>
+              <div class="stat-label text-white-50">Years Experience</div>
+            </div>
+            <div class="stat-item text-center">
+              <div class="stat-number text-white fw-bold">6</div>
+              <div class="stat-label text-white-50">Branches</div>
+            </div>
+            <div class="stat-item text-center">
+              <div class="stat-number text-white fw-bold">50K+</div>
+              <div class="stat-label text-white-50">Happy Customers</div>
+            </div>
+          </div>
         </div>
         <div class="col-lg-6 text-center">
           <img src="Images/about header.jpg" alt="About Josh's Cafe" class="img-fluid rounded about-hero-image">
@@ -55,61 +70,264 @@
     </div>
   </div>
 
-  <!-- About Content -->
+  <!-- Our Story Section -->
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="about-content bg-white p-5 rounded shadow">
-          <h2 class="h2 mb-4 text-center">Our Story</h2>
-          <p class="lead mb-4">Welcome to Josh's Cafe! We serve delicious food and drinks with a smile.</p>
-          
-          <div class="row g-4 mb-5">
-            <div class="col-md-6">
-              <div class="text-center">
-                <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
-                <h4>Quality Food</h4>
-                <p>We use only the finest ingredients to create memorable dishes that delight your taste buds.</p>
+      <div class="col-lg-10">
+        <div class="story-section text-center mb-5">
+          <h2 class="section-title mb-4">Our Story</h2>
+          <div class="story-content bg-white p-5 rounded shadow-lg">
+            <div class="row align-items-center">
+              <div class="col-lg-6 text-start">
+                <h3 class="h3 mb-3 text-primary">A Dream That Started in 2009</h3>
+                <p class="lead mb-4">What began as a small coffee shop in the heart of Talisay City has grown into one of Cebu's most beloved dining destinations. Our founder, Josh, had a simple vision: to create a place where people could enjoy great food, excellent coffee, and warm hospitality.</p>
+                <p class="mb-4">Today, Josh's Cafe continues to serve our community with the same passion and dedication that inspired us from the beginning. We've expanded to multiple locations while maintaining the intimate, welcoming atmosphere that our customers love.</p>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="text-center">
-                <i class="fas fa-coffee fa-3x text-primary mb-3"></i>
-                <h4>Premium Drinks</h4>
-                <p>From artisanal coffee to refreshing beverages, we craft drinks that complement your meal perfectly.</p>
+              <div class="col-lg-6">
+                <div class="story-image-container">
+                  <img src="Images/feature.jpg" alt="Our Story" class="img-fluid rounded story-image">
+                  <div class="story-overlay">
+                    <i class="fas fa-heart fa-2x text-white"></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <div class="mission-section text-center">
-            <h3 class="h3 mb-3">Our Mission</h3>
-            <p class="mb-4">Our mission is to provide a cozy place for everyone to enjoy great meals and good company. We believe that food brings people together, and we're committed to creating an atmosphere where memories are made and friendships are strengthened.</p>
-            
-            <div class="row g-4">
-              <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">Community</h5>
-                    <p class="card-text">Building a welcoming space for our local community.</p>
-                  </div>
+  <!-- Values Section -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="section-title text-center mb-5">Our Core Values</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="value-card text-center h-100">
+              <div class="value-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h4 class="value-title">Passion</h4>
+              <p class="value-description">We pour our heart into every dish, every cup of coffee, and every interaction with our customers.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="value-card text-center h-100">
+              <div class="value-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <h4 class="value-title">Excellence</h4>
+              <p class="value-description">We strive for excellence in everything we do, from food quality to customer service.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="value-card text-center h-100">
+              <div class="value-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h4 class="value-title">Community</h4>
+              <p class="value-description">We're more than a cafe - we're a gathering place for friends, families, and our community.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="value-card text-center h-100">
+              <div class="value-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h4 class="value-title">Sustainability</h4>
+              <p class="value-description">We're committed to eco-friendly practices and supporting local farmers and suppliers.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="value-card text-center h-100">
+              <div class="value-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h4 class="value-title">Innovation</h4>
+              <p class="value-description">We constantly explore new flavors, techniques, and ways to enhance your dining experience.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="value-card text-center h-100">
+              <div class="value-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h4 class="value-title">Integrity</h4>
+              <p class="value-description">We operate with honesty, transparency, and respect for our customers and employees.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission & Vision Section -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="mission-card h-100">
+              <div class="mission-header">
+                <i class="fas fa-bullseye"></i>
+                <h3>Our Mission</h3>
+              </div>
+              <p class="mission-text">To provide exceptional dining experiences that bring people together, serving delicious food and beverages in a warm, welcoming atmosphere that feels like home.</p>
+              <ul class="mission-list">
+                <li><i class="fas fa-check"></i> Deliver outstanding food quality</li>
+                <li><i class="fas fa-check"></i> Provide exceptional customer service</li>
+                <li><i class="fas fa-check"></i> Create memorable dining experiences</li>
+                <li><i class="fas fa-check"></i> Support our local community</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="vision-card h-100">
+              <div class="vision-header">
+                <i class="fas fa-eye"></i>
+                <h3>Our Vision</h3>
+              </div>
+              <p class="vision-text">To become the most beloved cafe chain in Cebu, known for our authentic flavors, warm hospitality, and commitment to creating spaces where meaningful connections happen.</p>
+              <ul class="vision-list">
+                <li><i class="fas fa-arrow-right"></i> Expand our presence across Cebu</li>
+                <li><i class="fas fa-arrow-right"></i> Introduce innovative menu items</li>
+                <li><i class="fas fa-arrow-right"></i> Enhance digital customer experience</li>
+                <li><i class="fas fa-arrow-right"></i> Lead in sustainable practices</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="section-title text-center mb-5">Meet Our Team</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="team-card text-center">
+              <div class="team-image">
+                <img src="Images/founder.jpg" alt="Josh - Founder" class="img-fluid rounded-circle">
+                <div class="team-social">
+                  <a href="https://www.facebook.com/joshhh699"><i class="fab fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/levwisit01/"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">Quality</h5>
-                    <p class="card-text">Maintaining the highest standards in food and service.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">Innovation</h5>
-                    <p class="card-text">Constantly evolving our menu and dining experience.</p>
-                  </div>
-                </div>
+              <div class="team-info">
+                <h4 class="team-name">Josh Paculaba</h4>
+                <p class="team-position">Founder & CEO</p>
+                <p class="team-description">The visionary behind Josh's Cafe, Josh's passion for food and community drives everything we do.</p>
               </div>
             </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="team-card text-center">
+              <div class="team-image">
+                <img src="Images/founder.jpg" alt="Chef Maria" class="img-fluid rounded-circle">
+                <div class="team-social">
+                  <a href="https://www.facebook.com/joshhh699"><i class="fab fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/levwisit01/"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="team-info">
+                <h4 class="team-name">Josh Paculaba</h4>
+                <p class="team-position">Head Chef</p>
+                <p class="team-description">With 10+ years of culinary experience, Chef Josh creates our signature dishes with creativity and passion.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="team-card text-center">
+              <div class="team-image">
+                <img src="Images/founder.jpg" alt="Manager Carlos" class="img-fluid rounded-circle">
+                <div class="team-social">
+                  <a href="https://www.facebook.com/joshhh699"><i class="fab fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/levwisit01/"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="team-info">
+                <h4 class="team-name">Josh Paculaba</h4>
+                <p class="team-position">Operations Manager</p>
+                <p class="team-description">Josh ensures smooth operations across all our branches, maintaining our high standards of service.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="stats-section bg-primary text-white p-5 rounded shadow-lg">
+          <h2 class="text-center mb-5">Our Impact in Numbers</h2>
+          <div class="row g-4 text-center">
+            <div class="col-lg-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fas fa-coffee"></i>
+                </div>
+                <div class="stat-number">100K+</div>
+                <div class="stat-label">Cups of Coffee Served</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Meals Prepared</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fas fa-smile"></i>
+                </div>
+                <div class="stat-number">25K+</div>
+                <div class="stat-label">Happy Customers</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Team Members</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action Section -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="cta-section text-center bg-light p-5 rounded shadow">
+          <h3 class="mb-4">Ready to Experience Josh's Cafe?</h3>
+          <p class="lead mb-4">Visit one of our branches today and discover why we're Cebu's favorite dining destination.</p>
+          <div class="cta-buttons">
+            <a href="branch.html" class="btn btn-primary btn-lg me-3">
+              <i class="fas fa-map-marker-alt me-2"></i>Find a Branch
+            </a>
+            <a href="menu.html" class="btn btn-outline-primary btn-lg">
+              <i class="fas fa-utensils me-2"></i>View Menu
+            </a>
           </div>
         </div>
       </div>
