@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josh's Cafe - Menu</title>
+    <title>Brewlen's Cafe - Menu</title>
     <link href="Bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src="Images/logo.jpg" alt="Josh's Cafe" class="navbar-img">
+        <img src="Images/cafe logo.jpg" alt="Josh's Cafe" class="navbar-img">
       </a>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -57,69 +57,81 @@
     </div>
   </div>
 
-  <!-- Category Navigation -->
-  <div class="category-nav">
+  <!-- Menu Layout with Left Sidebar -->
+  <div class="menu-layout py-4">
     <div class="container">
-      <nav class="nav justify-content-center">
-        <a class="nav-link active" href="#" data-category="all">All Items</a>
-        <a class="nav-link" href="#" data-category="main">Main Dishes</a>
-        <a class="nav-link" href="#" data-category="appetizer">Appetizers</a>
-        <a class="nav-link" href="#" data-category="dessert">Desserts</a>
-        <a class="nav-link" href="#" data-category="beverage">Beverages</a>
-      </nav>
-    </div>
-  </div>
+      <div class="row">
+        <!-- Left Sidebar Categories -->
+        <aside class="col-lg-3 d-none d-lg-block">
+          <nav class="left-category-nav">
+            <div class="category-group">
+              <h6>FOOD</h6>
+              <a class="nav-link active" href="#" data-filter="food">All Food</a>
+              <a class="nav-link" href="#" data-filter="chicken">Chicken</a>
+              <a class="nav-link" href="#" data-filter="pork">Pork</a>
+              <a class="nav-link" href="#" data-filter="beef">Beef</a>
+              <a class="nav-link" href="#" data-filter="appetizers">Appetizers</a>
+              <a class="nav-link" href="#" data-filter="desserts">Desserts</a>
+              <a class="nav-link" href="#" data-filter="fruits">Fruits</a>
+              <a class="nav-link" href="#" data-filter="bake-in">Bake - In</a>
+            </div>
+            <div class="category-group mt-3">
+              <h6>DRINKS</h6>
+              <a class="nav-link" href="#" data-filter="drinks">All Drinks</a>
+              <a class="nav-link" href="#" data-filter="brewed">Brewed Coffee</a>
+              <a class="nav-link" href="#" data-filter="blended">Blended Beverage</a>
+              <a class="nav-link" href="#" data-filter="tea">Teavana Tea</a>
+              <a class="nav-link" href="#" data-filter="chocolate">Chocolate & More</a>
+            </div>
+          </nav>
+        </aside>
 
-  <!-- Search Container -->
-  <div class="container">
-    <div class="search-container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="text-center mb-3">
-            <h4>Search Our Menu</h4>
-            <p class="text-muted">Find your favorite dishes quickly and easily</p>
+        <!-- Right Content -->
+        <div class="col-lg-9">
+          <!-- Search Container -->
+          <div class="search-container">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
+                <div class="text-center mb-3">
+                  <h4>Search Our Menu</h4>
+                  <p class="text-muted">Find your favorite dishes quickly and easily</p>
+                </div>
+                <input type="text" 
+                       id="Search" 
+                       class="form-control search-input" 
+                       placeholder="Search for food, drinks, or ingredients...">
+              </div>
+            </div>
           </div>
-          <input type="text" 
-                 id="Search" 
-                 class="form-control search-input" 
-                 placeholder="Search for food, drinks, or ingredients...">
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Menu Container -->
-  <div class="menu-container">
-    <div class="container">
-      <!-- Main Dishes Section -->
-      <div class="menu-section" id="mainSection">
-        <h2 class="section-title">Main Dishes</h2>
-        <div class="menu-grid" id="mainGrid">
-          <!-- Main dishes will be populated by JavaScript -->
-        </div>
-      </div>
+          <!-- Menu Container -->
+          <div class="menu-container">
+            <div class="container p-0">
+              <!-- Main Dishes Section -->
+              <div class="menu-section" id="mainSection">
+                <h2 class="section-title">Main Dishes</h2>
+                <div class="menu-grid" id="mainGrid"></div>
+              </div>
 
-      <!-- Appetizers Section -->
-      <div class="menu-section" id="appetizerSection">
-        <h2 class="section-title">Appetizers</h2>
-        <div class="menu-grid" id="appetizerGrid">
-          <!-- Appetizers will be populated by JavaScript -->
-        </div>
-      </div>
+              <!-- Appetizers Section -->
+              <div class="menu-section" id="appetizerSection">
+                <h2 class="section-title">Appetizers</h2>
+                <div class="menu-grid" id="appetizerGrid"></div>
+              </div>
 
-      <!-- Desserts Section -->
-      <div class="menu-section" id="dessertSection">
-        <h2 class="section-title">Desserts</h2>
-        <div class="menu-grid" id="dessertGrid">
-          <!-- Desserts will be populated by JavaScript -->
-        </div>
-      </div>
+              <!-- Desserts Section -->
+              <div class="menu-section" id="dessertSection">
+                <h2 class="section-title">Desserts</h2>
+                <div class="menu-grid" id="dessertGrid"></div>
+              </div>
 
-      <!-- Beverages Section -->
-      <div class="menu-section" id="beverageSection">
-        <h2 class="section-title">Beverages</h2>
-        <div class="menu-grid" id="beverageGrid">
-          <!-- Beverages will be populated by JavaScript -->
+              <!-- Beverages Section -->
+              <div class="menu-section" id="beverageSection">
+                <h2 class="section-title">Beverages</h2>
+                <div class="menu-grid" id="beverageGrid"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -135,55 +147,20 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-6 d-flex align-items-center">
-              <div class="mb-4 w-100">
-                <img id="modalImg" src="" alt="Dish Image" class="modal-image" style="width: 100%; max-width: 400px; border-radius: 16px;">
+            <div class="col-md-5">
+              <div class="modal-visual">
+                <div class="modal-img-wrap p-3">
+                  <img id="modalImg" src="" alt="Dish Image" class="modal-image">
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <h3 id="modalItemTitle" class="mb-3 text-primary"></h3>
+            <div class="col-md-7 modal-details">
+              <h3 id="modalItemTitle" class="mb-2 text-primary"></h3>
+              <div class="calories-badge mb-3"><span id="modalCalories"></span> calories</div>
               <p id="modalDesc" class="mb-4 lead"></p>
-              
-              <div class="row mb-4">
-                <div class="col-6">
-                  <div class="text-center p-3 bg-light rounded">
-                    <h6 class="text-muted mb-1">Price</h6>
-                    <span id="modalPrice" class="h5 text-success fw-bold"></span>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="text-center p-3 bg-light rounded">
-                    <h6 class="text-muted mb-1">Category</h6>
-                    <span id="modalCategory" class="h6 text-primary"></span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="mb-4">
-                <h6 class="text-muted mb-2">Ingredients</h6>
-                <p id="modalIngredients" class="text-muted"></p>
-              </div>
-              
-              <div class="mb-4">
-                <h6 class="text-muted mb-2">Preparation Time</h6>
-                <p id="modalPrepTime" class="text-muted"></p>
-              </div>
-              
-              <div class="mb-4">
-                <h6 class="text-muted mb-2">Nutritional Info</h6>
-                <div class="row text-center" id="nutritionGrid"></div>
-              </div>
-              
-              <div class="d-grid gap-2">
-                <button class="btn btn-success btn-lg" onclick="buyNow()">
-                  <i class="fas fa-shopping-bag me-2"></i>Buy Now
-                </button>
-                <button class="btn btn-primary btn-lg" onclick="addToCart()">
-                  <i class="fas fa-shopping-cart me-2"></i>Add to Cart
-                </button>
-                <button class="btn btn-outline-danger" onclick="addToFavorites()">
-                  <i class="fas fa-heart me-2"></i>Add to Favorites
-                </button>
+              <div class="mb-2">
+                <h6 class="text-muted mb-2">You may also like</h6>
+                <div class="row g-3" id="suggestionsRow"></div>
               </div>
             </div>
           </div>
@@ -203,6 +180,8 @@
       checkAuthStatus();
       loadMenuItems();
       setupCategoryNavigation();
+      // Apply initial filter to show Food by default
+      filterItems('food');
       updateCartCount();
       updateFavoritesCount();
     });
@@ -291,17 +270,14 @@
 
     // Setup category navigation
     function setupCategoryNavigation() {
-      document.querySelectorAll('.category-nav .nav-link').forEach(link => {
+      // Top bar no longer used; wire left sidebar
+      document.querySelectorAll('.left-category-nav .nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
-          
-          // Update active state
-          document.querySelectorAll('.category-nav .nav-link').forEach(l => l.classList.remove('active'));
+          document.querySelectorAll('.left-category-nav .nav-link').forEach(l => l.classList.remove('active'));
           this.classList.add('active');
-          
-          // Show/hide sections
-          const category = this.dataset.category;
-          showCategory(category);
+          const filter = this.dataset.filter;
+          filterItems(filter);
         });
       });
     }
@@ -309,7 +285,6 @@
     // Show specific category
     function showCategory(category) {
       const sections = ['main', 'appetizer', 'dessert', 'beverage'];
-      
       if (category === 'all') {
         sections.forEach(section => {
           document.getElementById(section + 'Section').style.display = 'block';
@@ -320,6 +295,43 @@
           element.style.display = section === category ? 'block' : 'none';
         });
       }
+    }
+
+    // Sidebar filter logic
+    function filterItems(filter) {
+      // Show all sections by default
+      showCategory('all');
+      const allCards = document.querySelectorAll('.menu-card');
+      const sections = [
+        { id: 'mainSection', grid: 'mainGrid' },
+        { id: 'appetizerSection', grid: 'appetizerGrid' },
+        { id: 'dessertSection', grid: 'dessertGrid' },
+        { id: 'beverageSection', grid: 'beverageGrid' }
+      ];
+      if (!filter || filter === 'food' || filter === 'drinks') {
+        allCards.forEach(card => {
+          const isDrink = card.dataset.type === 'drink';
+          const isFood = card.dataset.type === 'food';
+          const shouldShow = (filter === 'food' && isFood) || (filter === 'drinks' && isDrink) || (!filter);
+          card.style.display = shouldShow ? 'block' : 'none';
+        });
+        // Hide section blocks with no visible cards
+        sections.forEach(sec => {
+          const grid = document.getElementById(sec.grid);
+          const visible = grid && grid.querySelectorAll('.menu-card[style*="display: block"]').length > 0;
+          document.getElementById(sec.id).style.display = visible ? 'block' : 'none';
+        });
+        return;
+      }
+      allCards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(',');
+        card.style.display = tags.includes(filter) ? 'block' : 'none';
+      });
+      sections.forEach(sec => {
+        const grid = document.getElementById(sec.grid);
+        const visible = grid && grid.querySelectorAll('.menu-card[style*="display: block"]').length > 0;
+        document.getElementById(sec.id).style.display = visible ? 'block' : 'none';
+      });
     }
 
     // Load menu items (frontend-only)
@@ -333,6 +345,8 @@
           image: 'Images/Buter Chicken.jpg',
           category: 'main',
           price: '$12.99',
+          type: 'food',
+          tags: ['chicken'],
           ingredients: 'Chicken breast, tomatoes, cream, butter, garam masala, fenugreek, ginger, garlic, onions, cashews',
           prepTime: '25-30 minutes',
           nutrition: {
@@ -349,6 +363,8 @@
           image: 'Images/Chicken curry.jpg',
           category: 'main',
           price: '$11.99',
+          type: 'food',
+          tags: ['chicken'],
           ingredients: 'Chicken thighs, curry powder, turmeric, cumin, coriander, chili, coconut milk, tomatoes, onions',
           prepTime: '20-25 minutes',
           nutrition: {
@@ -365,6 +381,8 @@
           image: 'Images/Crispy Chilli Chicken.jpg',
           category: 'main',
           price: '$13.99',
+          type: 'food',
+          tags: ['chicken'],
           ingredients: 'Chicken breast, cornstarch, soy sauce, chili sauce, honey, garlic, ginger, green onions, sesame seeds',
           prepTime: '15-20 minutes',
           nutrition: {
@@ -378,9 +396,11 @@
           id: 4,
           title: 'Spring Rolls',
           description: 'Fresh vegetable spring rolls with crispy wrapper, served with sweet chili sauce.',
-          image: 'Images/feature.jpg',
+          image: 'Images/spring rolls.jpg',
           category: 'appetizer',
           price: '$6.99',
+          type: 'food',
+          tags: ['appetizers'],
           ingredients: 'Rice paper, carrots, cucumber, lettuce, mint, cilantro, rice vermicelli, shrimp, peanut sauce',
           prepTime: '10-15 minutes',
           nutrition: {
@@ -397,6 +417,8 @@
           image: 'Images/chocolate lava cake.jpg',
           category: 'dessert',
           price: '$8.99',
+          type: 'food',
+          tags: ['desserts','chocolate'],
           ingredients: 'Dark chocolate, butter, eggs, sugar, flour, vanilla extract, cocoa powder, vanilla ice cream',
           prepTime: '12-15 minutes',
           nutrition: {
@@ -413,6 +435,8 @@
           image: 'Images/ice coffee.jpg',
           category: 'beverage',
           price: '$4.99',
+          type: 'drink',
+          tags: ['brewed'],
           ingredients: 'Cold brew coffee, heavy cream, vanilla syrup, ice, whipped cream, chocolate shavings',
           prepTime: '5 minutes',
           nutrition: {
@@ -429,6 +453,8 @@
           image: 'Images/milk tea.jpg',
           category: 'beverage',
            price: '$4.99',
+          type: 'drink',
+          tags: ['tea'],
           ingredients: 'Tea, milk, sweeterner, ice (optional), flavoring',
            prepTime: '5 minutes',
           nutrition: {
@@ -446,12 +472,104 @@
           image: 'Images/Pickled Carrots.jpg',
           category: 'appetizer',
           price: '$3.99',
+          type: 'food',
+          tags: ['appetizers','fruits'],
           ingredients: 'Carrots, vinegar, sugar, salt, garlic, spices',
           prepTime: '10 minutes',
           nutrition: {
             calories: '50',
             protein: '1g',
             carbs: '12g',
+            fat: '0g'
+          }
+        },
+        {
+          id: 9,
+          title: 'Coffee jelly',
+          description: 'Coffee jelly is a dessert made from coffee-flavored gelatin, often served with cream or milk.',
+          image: 'Images/Coffee jelly.jpg',
+          category: 'dessert',
+          price: '$5.99',
+          type: 'food',
+          tags: ['desserts'],
+          ingredients: 'Coffee, gelatin, sugar, water, cream (optional)',
+          prepTime: '4-6 hours (including chilling time)',
+          nutrition: {
+            calories: '120',
+            protein: '2g',
+            carbs: '24g',
+            fat: '0g'
+          }
+        },
+        {
+          id: 10,
+          title: 'mocha cheesecake',
+          description: 'A rich and creamy cheesecake with a coffee and chocolate flavor, topped with a mocha ganache.',
+          image: 'Images/mocha cheesecake.jpg',
+          category: 'dessert',
+          price: '$7.99',
+          type: 'food',
+          tags: ['desserts','chocolate'],
+          ingredients: 'Cream cheese, coffee, chocolate, sugar, eggs, graham cracker crust',
+          prepTime: '1 hour (plus chilling time)',
+          nutrition: {
+            calories: '350',
+            protein: '6g',
+            carbs: '40g',
+            fat: '20g'
+          }
+        },
+        {
+          id: 11,
+          title: 'Mini Spaghetti and Meatballs',
+          description: 'A classic Italian dish with spaghetti pasta and homemade meatballs in marinara sauce.',
+          image: 'Images/Mini Spaghetti and Meatball.jpg',
+          category: 'appetizer',
+          price: '$8.99',
+          type: 'food',
+          tags: ['appetizers','beef'],
+          ingredients: 'Spaghetti, ground beef, breadcrumbs, egg, marinara sauce, Parmesan cheese',
+          prepTime: '30 minutes',
+          nutrition: {
+            calories: '400',
+            protein: '20g',
+            carbs: '50g',
+            fat: '15g'
+          }
+        },
+        {
+          id: 12,
+          title: 'Cappuccino',
+          description: 'A classic Italian coffee drink made with espresso, steamed milk, and a layer of frothed milk on top.',
+          image: 'Images/Cappuccino.jpg',
+          category: 'beverage',
+          price: '$3.99',
+          type: 'drink',
+          tags: ['brewed'],
+          ingredients: 'Espresso, steamed milk, frothed milk, cocoa powder (optional)',
+          prepTime: '5 minutes',
+          nutrition: {
+            calories: '120',
+            protein: '6g',
+            carbs: '12g',
+            fat: '6g'
+          }
+        },
+        {
+          id: 13,
+          title: 'americano',
+          description: 'A simple and strong coffee drink made by diluting espresso with hot water.',  
+          image: 'Images/americano.jpg',
+          category: 'beverage',
+          price: '$2.99',
+          type: 'drink',
+          tags: ['brewed'],
+          ingredients: 'Espresso, hot water',
+          prepTime: '2 minutes',
+          nutrition: {
+            calories: '5',
+            protein: '0g',
+            carbs: '1g',
             fat: '0g'
           }
         }
@@ -470,7 +588,7 @@
       if (!grid) return;
       
       grid.innerHTML = items.map(item => `
-        <div class="menu-card" onclick="openModal(${item.id})">
+        <div class="menu-card" data-type="${item.type}" data-tags="${(item.tags||[]).join(',')}" onclick="openModal(${item.id})">
           <div class="card-image-container">
             <img src="${item.image}" class="card-image" alt="${item.title}">
           </div>
@@ -596,10 +714,7 @@
           ingredients: 'Cold brew coffee, heavy cream, vanilla syrup, ice, whipped cream, chocolate shavings',
           prepTime: '5 minutes',
           nutrition: {
-            calories: '180',
-            protein: '2g',
-            carbs: '18g',
-            fat: '12g'
+            calories: '180'
           }
         },
         { 
@@ -612,18 +727,84 @@
           ingredients:  'carrots, white vinegar, water, sugar, garlic, salt, black pepper, allspice berries',
           prepTime: '10 minutes',
           nutrition: {
-            calories: '54',
-            protein: '1g',
+            calories: '54'
+          }
+        },
+        {
+          id: 9,
+          title: 'Coffee jelly',
+          description: 'Coffee jelly is a dessert made from coffee-flavored gelatin, often served with cream or milk.',
+          image: 'Images/Coffee jelly.jpg',
+          category: 'dessert',
+          price: '$5.99',
+          ingredients: 'Coffee, gelatin, sugar, water, cream (optional)',
+          prepTime: '4-6 hours (including chilling time)',
+          nutrition: {
+            calories: '120'
+          }
+        },
+        {
+          id: 10,
+          title: 'mocha cheesecake',
+          description: 'A rich and creamy cheesecake with a coffee and chocolate flavor, topped with a mocha ganache.',
+          image: 'Images/mocha cheesecake.jpg',
+          category: 'dessert',
+          price: '$7.99',
+          ingredients: 'Cream cheese, coffee, chocolate, sugar, eggs, graham cracker crust',
+          prepTime: '1 hour (plus chilling time)',
+          nutrition: {
+            calories: '350',
+            protein: '6g',
+            carbs: '40g',
+            fat: '20g'
+          }
+        },
+        {
+          id: 11,
+          title: 'Mini Spaghetti and Meatballs',
+          description: 'A classic Italian dish with spaghetti pasta and homemade meatballs in marinara sauce.',
+          image: 'Images/Mini Spaghetti and Meatball.jpg',
+          category: 'appetizer',
+          price: '$8.99',
+          ingredients: 'Spaghetti, ground beef, breadcrumbs, egg, marinara sauce, Parmesan cheese',
+          prepTime: '30 minutes',
+          nutrition: {
+            calories: '400',
+            protein: '20g',
+            carbs: '50g',
+            fat: '15g'
+          }
+        },
+        {
+          id: 12,
+          title: 'Cappuccino',
+          description: 'A classic Italian coffee drink made with espresso, steamed milk, and a layer of frothed milk on top.',
+          image: 'Images/Cappuccino.jpg',
+          category: 'beverage',
+          price: '$3.99',
+          ingredients: 'Espresso, steamed milk, frothed milk, cocoa powder (optional)',
+          prepTime: '5 minutes',
+          nutrition: {
+            calories: '120',
+            protein: '6g',
             carbs: '12g',
-            fat: '1g',
-            SaturatedFat: '1g',
-            Sodium: '913mg',
-            Potasium: '186mg',
-            Fiber: '2g',
-            Sugar: '6g',
-            VitaminC: '3mg',
-            Calcium: '24mg',
-            Iron: '1mg'
+            fat: '6g'
+          }
+        },
+        {
+          id: 13,
+          title: 'americano',
+          description: 'A simple and strong coffee drink made by diluting espresso with hot water.',  
+          image: 'Images/americano.jpg',
+          category: 'beverage',
+          price: '$2.99',
+          ingredients: 'Espresso, hot water',
+          prepTime: '2 minutes',
+          nutrition: {
+            calories: '5',
+            protein: '0g',
+            carbs: '1g',
+            fat: '0g'
           }
         }
       ];
@@ -631,34 +812,45 @@
       const item = allItems.find(i => i.id === itemId);
       if (!item) return;
 
-      // Store current item for button functions
-      currentModalItem = item;
+      // Populate modal for selected item
 
       // Populate modal with item details
       document.getElementById('modalImg').src = item.image;
       document.getElementById('modalItemTitle').textContent = item.title;
       document.getElementById('modalDesc').textContent = item.description;
-      document.getElementById('modalPrice').textContent = item.price;
-      document.getElementById('modalCategory').textContent = item.category;
-      document.getElementById('modalIngredients').textContent = item.ingredients;
-      document.getElementById('modalPrepTime').textContent = item.prepTime;
-      // Render nutrition dynamically in 4 columns per row
-      const nutritionContainer = document.getElementById('nutritionGrid');
-      nutritionContainer.innerHTML = '';
-      const nutritionEntries = Object.entries(item.nutrition || {});
-      nutritionEntries.forEach(([key, value]) => {
-        const label = key.charAt(0).toUpperCase() + key.slice(1);
-        nutritionContainer.insertAdjacentHTML('beforeend', `
-          <div class="col-6 col-md-3 mb-2">
-            <div class="bg-light rounded p-2 h-100">
-              <small class="text-muted d-block">${label}</small>
-              <span class="fw-bold">${value}</span>
+      // Calories only
+      const calories = item.nutrition && item.nutrition.calories ? item.nutrition.calories : '';
+      const caloriesEl = document.getElementById('modalCalories');
+      if (caloriesEl) caloriesEl.textContent = calories;
+
+      // Suggestions (3 random different items from same category/type when possible)
+      const allItemsForSuggestions = (window.__allItemsCache || []).length ? window.__allItemsCache : (window.__allItemsCache = [
+        ...document.querySelectorAll('.menu-card')
+      ].map(card => ({
+        id: parseInt(card.getAttribute('onclick').match(/openModal\((\d+)\)/)[1]),
+        title: card.querySelector('.card-title').textContent,
+        image: card.querySelector('img').getAttribute('src'),
+      })));
+      const suggestionsRow = document.getElementById('suggestionsRow');
+      if (suggestionsRow) {
+        // Fallback: pick first 3 different from current id
+        const suggestions = allItemsForSuggestions.filter(s => s.id !== item.id).slice(0, 3);
+        suggestionsRow.innerHTML = suggestions.map(s => `
+          <div class="col-4">
+            <div class="suggest-card" onclick="openModal(${s.id})">
+              <div class="suggest-img">
+                <img src="${s.image}" alt="${s.title}">
+              </div>
+              <div class="suggest-title">${s.title}</div>
             </div>
           </div>
-        `);
-      });
+        `).join('');
+      }
       // Show modal
-      const modal = new bootstrap.Modal(document.getElementById('modal'));
+      // Ensure only one backdrop by hiding any existing instance
+      const existing = bootstrap.Modal.getInstance(document.getElementById('modal'));
+      if (existing) existing.hide();
+      const modal = new bootstrap.Modal(document.getElementById('modal'), { backdrop: true });
       modal.show();
     }
 
@@ -679,129 +871,7 @@
       });
     });
 
-    // Global variable to store current item in modal
-    let currentModalItem = null;
-
-    // Buy Now functionality
-    function buyNow() {
-      if (!currentModalItem) {
-        alert('No item selected');
-        return;
-      }
-      
-      // Check if user is authenticated
-      if (!isUserAuthenticated()) {
-        alert('Please login to purchase items');
-        window.location.href = 'login.html';
-        return;
-      }
-      
-      // Redirect to checkout or show purchase confirmation
-      const confirmPurchase = confirm(`Confirm purchase of ${currentModalItem.title} for ${currentModalItem.price}?`);
-      if (confirmPurchase) {
-        // Here you would typically redirect to a checkout page or process payment
-        alert(`Thank you for your purchase! ${currentModalItem.title} will be prepared for you.`);
-        
-        // Close modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById('modal'));
-        modal.hide();
-        
-        // You can redirect to checkout page here
-        // window.location.href = 'checkout.html';
-      }
-    }
-
-    // Add to Cart functionality
-    function addToCart() {
-      if (!currentModalItem) {
-        alert('No item selected');
-        return;
-      }
-      
-      // Check if user is authenticated
-      if (!isUserAuthenticated()) {
-        alert('Please login to add items to cart');
-        window.location.href = 'login.html';
-        return;
-      }
-      
-      // Get existing cart from localStorage
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      
-      // Check if item already exists in cart
-      const existingItem = cart.find(item => item.id === currentModalItem.id);
-      
-      if (existingItem) {
-        existingItem.quantity += 1;
-        alert(`${currentModalItem.title} quantity updated in cart!`);
-      } else {
-        // Add new item to cart
-        cart.push({
-          id: currentModalItem.id,
-          title: currentModalItem.title,
-          price: currentModalItem.price,
-          image: currentModalItem.image,
-          quantity: 1
-        });
-        alert(`${currentModalItem.title} added to cart!`);
-      }
-      
-      // Save cart to localStorage
-      localStorage.setItem('cart', JSON.stringify(cart));
-      
-      // Update cart count in UI if it exists
-      updateCartCount();
-    }
-
-    // Add to Favorites functionality
-    function addToFavorites() {
-      if (!currentModalItem) {
-        alert('No item selected');
-        return;
-      }
-      
-      // Check if user is authenticated
-      if (!isUserAuthenticated()) {
-        alert('Please login to add items to favorites');
-        window.location.href = 'login.html';
-        return;
-      }
-      
-      // Get existing favorites from localStorage
-      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      
-      // Check if item already exists in favorites
-      const existingItem = favorites.find(item => item.id === currentModalItem.id);
-      
-      if (existingItem) {
-        alert(`${currentModalItem.title} is already in your favorites!`);
-        return;
-      }
-      
-      // Add new item to favorites
-      favorites.push({
-        id: currentModalItem.id,
-        title: currentModalItem.title,
-        price: currentModalItem.price,
-        image: currentModalItem.image,
-        category: currentModalItem.category
-      });
-      
-      // Save favorites to localStorage
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      
-      alert(`${currentModalItem.title} added to favorites!`);
-      
-      // Update favorites count in UI if it exists
-      updateFavoritesCount();
-    }
-
-    // Check if user is authenticated
-    function isUserAuthenticated() {
-      // Check if user has a valid session
-      const user = localStorage.getItem('user');
-      return user !== null;
-    }
+    // Removed add-to-cart/favorites and buy-now features from modal for cleaner UI
 
     // Update cart count in UI
     function updateCartCount() {
@@ -827,46 +897,7 @@
       }
     }
 
-    // Show cart contents
-    function showCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      
-      if (cart.length === 0) {
-        alert('Your cart is empty');
-        return;
-      }
-      
-      let cartContent = 'Your Cart:\n\n';
-      let total = 0;
-      
-      cart.forEach(item => {
-        const itemTotal = parseFloat(item.price.replace('$', '')) * item.quantity;
-        total += itemTotal;
-        cartContent += `${item.title} x${item.quantity} - $${itemTotal.toFixed(2)}\n`;
-      });
-      
-      cartContent += `\nTotal: $${total.toFixed(2)}`;
-      
-      alert(cartContent);
-    }
-
-    // Show favorites
-    function showFavorites() {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      
-      if (favorites.length === 0) {
-        alert('You have no favorites yet');
-        return;
-      }
-      
-      let favoritesContent = 'Your Favorites:\n\n';
-      
-      favorites.forEach(item => {
-        favoritesContent += `${item.title} - ${item.price}\n`;
-      });
-      
-      alert(favoritesContent);
-    }
+    // Removed legacy cart/favorites alert drawers for cleaner code
 
 
   </script>
