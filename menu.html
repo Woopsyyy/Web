@@ -135,8 +135,8 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-6">
-              <div class="text-center mb-4">
+            <div class="col-md-6 d-flex align-items-center">
+              <div class="mb-4 w-100">
                 <img id="modalImg" src="" alt="Dish Image" class="modal-image" style="width: 100%; max-width: 400px; border-radius: 16px;">
               </div>
             </div>
@@ -171,32 +171,7 @@
               
               <div class="mb-4">
                 <h6 class="text-muted mb-2">Nutritional Info</h6>
-                <div class="row text-center">
-                  <div class="col-3">
-                    <div class="bg-light rounded p-2">
-                      <small class="text-muted d-block">Calories</small>
-                      <span id="modalCalories" class="fw-bold"></span>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="bg-light rounded p-2">
-                      <small class="text-muted d-block">Protein</small>
-                      <span id="modalProtein" class="fw-bold"></span>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="bg-light rounded p-2">
-                      <small class="text-muted d-block">Carbs</small>
-                      <span id="modalCarbs" class="fw-bold"></span>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="bg-light rounded p-2">
-                      <small class="text-muted d-block">Fat</small>
-                      <span id="modalFat" class="fw-bold"></span>
-                    </div>
-                  </div>
-                </div>
+                <div class="row text-center" id="nutritionGrid"></div>
               </div>
               
               <div class="d-grid gap-2">
@@ -347,7 +322,7 @@
       }
     }
 
-    // Load menu items
+    // Load menu items (frontend-only)
     function loadMenuItems() {
       // Enhanced menu data with full details
       const menuItems = [
@@ -463,6 +438,22 @@
             fat: '12g'
           }
       
+        },
+        {
+          id: 8,
+          title: 'Pickled Carrots',
+          description: 'Crunchy and tangy pickled carrots, perfect as a side dish or topping for salads and sandwiches.',
+          image: 'Images/Pickled Carrots.jpg',
+          category: 'appetizer',
+          price: '$3.99',
+          ingredients: 'Carrots, vinegar, sugar, salt, garlic, spices',
+          prepTime: '10 minutes',
+          nutrition: {
+            calories: '50',
+            protein: '1g',
+            carbs: '12g',
+            fat: '0g'
+          }
         }
       ];
 
@@ -611,21 +602,29 @@
             fat: '12g'
           }
         },
-        {
-            id: 8,
-            title: 'Cappucino',
-            description: 'A classic Italian coffee drink made with espresso, steamed milk, and a layer of frothed milk on top.',
-            image: 'Images/cappucino.jpg',
-            category: 'beverage',
-            price: '$3.99',
-            ingredients: 'Espresso, steamed milk, foamed milk,  cocoa powder or cinnamon, sweetener (optional)',
-            prepTime: '5 minutes',
-            nutrition: {
-              calories: '120',
-              protein: '6g',
-              carbs: '10g',
-              fat: '6g'
-            }
+        { 
+          id: 8,
+          title: 'Pickled Carrots',
+          description: 'Crunchy and tangy pickled carrots, perfect as a side dish or topping for salads and sandwiches.',
+          image: 'Images/Pickled Carrots.jpg',
+          category: 'appetizer',
+          price: '$3.99',
+          ingredients:  'carrots, white vinegar, water, sugar, garlic, salt, black pepper, allspice berries',
+          prepTime: '10 minutes',
+          nutrition: {
+            calories: '54',
+            protein: '1g',
+            carbs: '12g',
+            fat: '1g',
+            SaturatedFat: '1g',
+            Sodium: '913mg',
+            Potasium: '186mg',
+            Fiber: '2g',
+            Sugar: '6g',
+            VitaminC: '3mg',
+            Calcium: '24mg',
+            Iron: '1mg'
+          }
         }
       ];
       
@@ -643,11 +642,21 @@
       document.getElementById('modalCategory').textContent = item.category;
       document.getElementById('modalIngredients').textContent = item.ingredients;
       document.getElementById('modalPrepTime').textContent = item.prepTime;
-      document.getElementById('modalCalories').textContent = item.nutrition.calories;
-      document.getElementById('modalProtein').textContent = item.nutrition.protein;
-      document.getElementById('modalCarbs').textContent = item.nutrition.carbs;
-      document.getElementById('modalFat').textContent = item.nutrition.fat;
-
+      // Render nutrition dynamically in 4 columns per row
+      const nutritionContainer = document.getElementById('nutritionGrid');
+      nutritionContainer.innerHTML = '';
+      const nutritionEntries = Object.entries(item.nutrition || {});
+      nutritionEntries.forEach(([key, value]) => {
+        const label = key.charAt(0).toUpperCase() + key.slice(1);
+        nutritionContainer.insertAdjacentHTML('beforeend', `
+          <div class="col-6 col-md-3 mb-2">
+            <div class="bg-light rounded p-2 h-100">
+              <small class="text-muted d-block">${label}</small>
+              <span class="fw-bold">${value}</span>
+            </div>
+          </div>
+        `);
+      });
       // Show modal
       const modal = new bootstrap.Modal(document.getElementById('modal'));
       modal.show();
