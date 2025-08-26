@@ -7,6 +7,8 @@
     <link href="Bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Bootstrap/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
   <!-- Navigation -->
@@ -249,6 +251,91 @@ At our cafe, every cup and plate is crafted with passion, quality, and a touch o
     </div>
   </div>
 
+  <!-- Feedback Section -->
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="feedback-section text-center">
+          <h4 class="mb-3">We'd Love to Hear From You!</h4>
+          <p class="mb-4">Share your experience with us and help us improve our service</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="feedback-card p-4 bg-light rounded">
+                <i class="fas fa-star text-warning mb-3" style="font-size: 2rem;"></i>
+                <h5>Rate Your Experience</h5>
+                <p class="text-muted">Tell us how we're doing</p>
+                <button class="btn btn-outline-primary" onclick="openRatingModal()">Rate Now</button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="feedback-card p-4 bg-light rounded">
+                <i class="fas fa-comment text-info mb-3" style="font-size: 2rem;"></i>
+                <h5>Send Feedback</h5>
+                <p class="text-muted">Share your thoughts with us</p>
+                <button class="btn btn-outline-info" onclick="openFeedbackModal()">Send Message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating Modal -->
+  <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ratingModalLabel">Rate Your Experience</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="text-center mb-3">
+            <h6>How would you rate your experience?</h6>
+            <div class="rating-stars mb-3">
+              <i class="fas fa-star star-rating" data-rating="1" style="font-size: 2rem; color: #ddd; cursor: pointer; margin: 0 5px;"></i>
+              <i class="fas fa-star star-rating" data-rating="2" style="font-size: 2rem; color: #ddd; cursor: pointer; margin: 0 5px;"></i>
+              <i class="fas fa-star star-rating" data-rating="3" style="font-size: 2rem; color: #ddd; cursor: pointer; margin: 0 5px;"></i>
+              <i class="fas fa-star star-rating" data-rating="4" style="font-size: 2rem; color: #ddd; cursor: pointer; margin: 0 5px;"></i>
+              <i class="fas fa-star star-rating" data-rating="5" style="font-size: 2rem; color: #ddd; cursor: pointer; margin: 0 5px;"></i>
+            </div>
+            <div id="ratingText" class="text-muted">Select a rating</div>
+          </div>
+          <div class="mb-3">
+            <label for="ratingMessage" class="form-label">Additional Comments (Optional)</label>
+            <textarea class="form-control" id="ratingMessage" rows="3" placeholder="Tell us more about your experience..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="submitRating()">Submit Rating</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="feedbackModalLabel">Send Feedback</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="feedbackMessage" class="form-label">Your Feedback</label>
+            <textarea class="form-control" id="feedbackMessage" rows="5" placeholder="Share your thoughts, suggestions, or any feedback you have for us..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="submitFeedback()">Send Feedback</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap JS -->
   <script src="Bootstrap/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
@@ -263,74 +350,217 @@ At our cafe, every cup and plate is crafted with passion, quality, and a touch o
     // Check if user is authenticated
     async function checkAuthStatus() {
       try {
-        const response = await fetch('Backend/auth.php?action=check_session');
+        // Add cache-busting parameter
+        const response = await fetch('Backend/auth/auth_me.php?t=' + Date.now());
         const result = await response.json();
         
-        if (result.success) {
+        if (result.user) {
           // User is logged in
-          showAuthenticatedUser(result.data.user);
+          showAuthenticatedUser(result.user);
         } else {
-          // User is not logged in
-          showLoginButtons();
+          // Require login before accessing the app
+          window.location.href = 'login.html';
+          return;
         }
       } catch (error) {
         console.error('Auth check error:', error);
-        showLoginButtons();
+        window.location.href = 'login.html';
       }
     }
 
     // Show authenticated user section
     function showAuthenticatedUser(user) {
       const authSection = document.getElementById('authSection');
+      let adminLink = '';
+      
+      if (user.role === 'admin') {
+        adminLink = '<li><a class="dropdown-item" href="admin.html"><i class="fas fa-cog me-2"></i>Admin Panel</a></li><li><hr class="dropdown-divider"></li>';
+      }
+      
       authSection.innerHTML = `
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <img src="${user.profile_picture || 'Images/logo.jpg'}" alt="Profile" class="rounded-circle me-2" style="width: 24px; height: 24px; object-fit: cover;">
-            ${user.name}
+            <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #666;"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-            <li><a class="dropdown-item" href="orders.html">My Orders</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+            ${adminLink}
+            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
           </ul>
         </div>
       `;
     }
 
-    // Show login/signup buttons
+    // Show login/signup buttons (unused due to hard redirect)
     function showLoginButtons() {
       const authSection = document.getElementById('authSection');
       authSection.innerHTML = `
         <a class="nav-link" href="login.html">Login</a>
-        <a class="nav-link" href="login.html">Signup</a>
       `;
     }
 
-    // Logout function
+    // Logout function -> always return to login page
     async function logout() {
       try {
-        const response = await fetch('Backend/auth.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: 'action=logout'
+        const response = await fetch('Backend/auth/auth_logout.php', {
+          method: 'POST'
         });
         
         const result = await response.json();
-        
-        if (result.success) {
-          // Redirect to login page
-          window.location.href = 'login.html?message=logged_out';
-        } else {
-          // Force logout by clearing local state
-          window.location.href = 'login.html?message=logged_out';
-        }
+        // Clear any cached data and redirect immediately
+        localStorage.removeItem('user');
+        sessionStorage.clear();
+        window.location.replace('login.html');
       } catch (error) {
         console.error('Logout error:', error);
-        // Force logout by clearing local state
-        window.location.href = 'login.html?message=logged_out';
+        // Clear any cached data and redirect even on error
+        localStorage.removeItem('user');
+        sessionStorage.clear();
+        window.location.replace('login.html');
+      }
+    }
+
+    // Rating and Feedback functionality
+    let selectedRating = 0;
+
+    function openRatingModal() {
+      const modal = new bootstrap.Modal(document.getElementById('ratingModal'));
+      modal.show();
+      resetRating();
+    }
+
+    function openFeedbackModal() {
+      const modal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+      modal.show();
+      document.getElementById('feedbackMessage').value = '';
+    }
+
+    function resetRating() {
+      selectedRating = 0;
+      const stars = document.querySelectorAll('.star-rating');
+      const ratingText = document.getElementById('ratingText');
+      
+      stars.forEach(star => {
+        star.style.color = '#ddd';
+      });
+      ratingText.textContent = 'Select a rating';
+    }
+
+    // Initialize star rating functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const stars = document.querySelectorAll('.star-rating');
+      
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          selectedRating = rating;
+          
+          // Update star colors
+          stars.forEach((s, index) => {
+            if (index < rating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#ddd';
+            }
+          });
+          
+          // Update rating text
+          const ratingText = document.getElementById('ratingText');
+          const ratingLabels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+          ratingText.textContent = ratingLabels[rating];
+        });
+        
+        // Hover effects
+        star.addEventListener('mouseenter', function() {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          stars.forEach((s, index) => {
+            if (index < rating) {
+              s.style.color = '#ffc107';
+            }
+          });
+        });
+        
+        star.addEventListener('mouseleave', function() {
+          stars.forEach((s, index) => {
+            if (index < selectedRating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#ddd';
+            }
+          });
+        });
+      });
+    });
+
+    async function submitRating() {
+      if (selectedRating === 0) {
+        alert('Please select a rating before submitting.');
+        return;
+      }
+
+      const message = document.getElementById('ratingMessage').value;
+      
+      try {
+        const response = await fetch('Backend/feedback/feedback.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            type: 'rating',
+            rating: selectedRating,
+            message: message
+          })
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+          alert('Thank you for your rating!');
+          const modal = bootstrap.Modal.getInstance(document.getElementById('ratingModal'));
+          modal.hide();
+          resetRating();
+        } else {
+          alert('Error: ' + (result.error || 'Failed to submit rating'));
+        }
+      } catch (error) {
+        console.error('Rating submission error:', error);
+        alert('Failed to submit rating. Please try again.');
+      }
+    }
+
+    async function submitFeedback() {
+      const message = document.getElementById('feedbackMessage').value.trim();
+      
+      if (!message) {
+        alert('Please enter your feedback before submitting.');
+        return;
+      }
+
+      try {
+        const response = await fetch('Backend/feedback/feedback.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            type: 'feedback',
+            message: message
+          })
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+          alert('Thank you for your feedback!');
+          const modal = bootstrap.Modal.getInstance(document.getElementById('feedbackModal'));
+          modal.hide();
+          document.getElementById('feedbackMessage').value = '';
+        } else {
+          alert('Error: ' + (result.error || 'Failed to submit feedback'));
+        }
+      } catch (error) {
+        console.error('Feedback submission error:', error);
+        alert('Failed to submit feedback. Please try again.');
       }
     }
   </script>

@@ -33,9 +33,8 @@
           </li>
         </ul>
         
-        <div class="navbar-nav">
-          <a class="nav-link" href="login.html">Login</a>
-          <a class="nav-link" href="login.html">Signup</a>
+        <div class="navbar-nav" id="authSection">
+          <!-- This will be populated by JavaScript based on auth status -->
         </div>
       </div>
     </div>
@@ -398,5 +397,84 @@
 
   <!-- Bootstrap JS -->
   <script src="Bootstrap/bootstrap.bundle.min.js"></script>
+  
+  <!-- Authentication Script -->
+  <script>
+    // Check authentication status on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkAuthStatus();
+    });
+
+    // Check if user is authenticated
+    async function checkAuthStatus() {
+      try {
+        const response = await fetch('Backend/auth/auth_me.php');
+        const result = await response.json();
+        
+        if (result.user) {
+          // User is logged in
+          showAuthenticatedUser(result.user);
+        } else {
+          // Require login before accessing the app
+          window.location.href = 'login.html';
+          return;
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        window.location.href = 'login.html';
+      }
+    }
+
+    // Show authenticated user section
+    function showAuthenticatedUser(user) {
+      const authSection = document.getElementById('authSection');
+      let adminLink = '';
+      
+      if (user.role === 'admin') {
+        adminLink = '<li><a class="dropdown-item" href="admin.html"><i class="fas fa-cog me-2"></i>Admin Panel</a></li><li><hr class="dropdown-divider"></li>';
+      }
+      
+      authSection.innerHTML = `
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #666;"></i>
+          </a>
+          <ul class="dropdown-menu">
+            ${adminLink}
+            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+          </ul>
+        </div>
+      `;
+    }
+
+    // Show login/signup buttons (unused due to hard redirect)
+    function showLoginButtons() {
+      const authSection = document.getElementById('authSection');
+      authSection.innerHTML = `
+        <a class="nav-link" href="login.html">Login</a>
+      `;
+    }
+
+    // Logout function -> always return to login page
+    async function logout() {
+      try {
+        const response = await fetch('Backend/auth/auth_logout.php', {
+          method: 'POST'
+        });
+        
+        const result = await response.json();
+        // Clear any cached data and redirect immediately
+        localStorage.removeItem('user');
+        sessionStorage.clear();
+        window.location.replace('login.html');
+      } catch (error) {
+        console.error('Logout error:', error);
+        // Clear any cached data and redirect even on error
+        localStorage.removeItem('user');
+        sessionStorage.clear();
+        window.location.replace('login.html');
+      }
+    }
+  </script>
 </body>
 </html> 
